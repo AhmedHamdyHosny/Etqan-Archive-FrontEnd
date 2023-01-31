@@ -1,0 +1,100 @@
+<div class="container pt-5 pb-5 mt-5 mb-5">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="row flex-column flex-md-row">
+      <div class="col">
+        <app-select
+          label="المشروع"
+          [menuItems]="filterData.projects"
+          [form]="form"
+          name="projectId"
+          [(ngModel)]="filterModel!.projectId"
+        >
+        </app-select>
+      </div>
+      <div class="col">
+        <app-select
+          label="نوع المحتوى"
+          [menuItems]="filterData.contentTypes"
+          [form]="form"
+          name="contentTypeId"
+          [(ngModel)]="filterModel!.contentTypeId"
+        >
+        </app-select>
+      </div>
+      <div class="col">
+        <app-select
+          label="فئة المحتوى"
+          [menuItems]="filterData.categories"
+          [form]="form"
+          name="categoryId"
+          [(ngModel)]="filterModel!.categoryId"
+        >
+        </app-select>
+      </div>
+      <div class="col">
+        <app-select
+          label="صيغة الملف"
+          [menuItems]="filterData.fileExtensions"
+          [form]="form"
+          name="fileExtensionId"
+          [(ngModel)]="filterModel!.fileExtensionId"
+        >
+        </app-select>
+      </div>
+    </div>
+    <div class="row mt-4 flex-column flex-md-row">
+      <div class="col">
+        <label for="keyWords">الكلمات الدالة</label>
+        <ng-select
+          [addTag]="true"
+          name="keyWords"
+          [hideSelected]="true"
+          [multiple]="true"
+          bindLabel="name"
+          [isOpen]="false"
+          [selectOnTab]="true"
+          [(ngModel)]="filterModel.keyWordsList"
+        >
+        </ng-select>
+      </div>
+      <div class="col-2 align-self-sm-center align-self-md-end mt-3">
+        <button type="submit" class="btn btn-primary px-4">بحث</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row d-flex mt-5">
+    <div *ngFor="let item of projectFileViews" class="card project-item">
+      <div class="card-body">
+        <h5 class="card-title fw-bold fs-5">{{ item.contentTitle ?? '' }}</h5>
+        <!-- <h6 class="card-subtitle mb-2 fw-bold fs-6 text-muted">{{ item.contentTypeName }}</h6> -->
+        <!-- <p class="card-text">
+         {{ item.longDescription }}
+        </p> -->
+        <div class="d-flex justify-content-between mb-2">
+          <p>{{ item.contentDescription }}</p>
+          <p>{{ item.contentTypeName }}</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <a (click)="routeToFileDetail(item)" class="btn btn-secondary card-link">تفاصيل</a>
+          <a  class="btn btn-info card-link" (click)="copyToClipboard(item)"
+            ><i class="fas fa-link"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <ngb-pagination
+    *ngIf="paging.totalItemsCount > 0"
+    class="d-flex justify-content-center mt-5 text-black-50"
+    [collectionSize]="paging.totalItemsCount"
+    [(page)]="paging.page"
+    [maxSize]="4"
+    [pageSize]="filterModel.pageSize"
+    (pageChange)="onPageChanged($event)"
+  ></ngb-pagination>
+  </div>
+</div>

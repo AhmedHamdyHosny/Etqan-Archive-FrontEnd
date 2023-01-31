@@ -1,0 +1,24 @@
+
+.detailBtn {
+    background-color:  rgb(194, 190, 190);
+}
+
+.detailBtn:hover {
+    background-color: darkgray;
+}
+
+
+.btn {
+    height: 30px;
+    width: 91px;
+}
+
+li:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+li:active {
+    background-color:  rgb(40, 40, 255);
+    cursor: pointer;
+}

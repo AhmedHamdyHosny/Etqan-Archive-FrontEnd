@@ -1,0 +1,185 @@
+.grid {
+    width: 100%; 
+}
+
+.form-control {
+    display: inline;
+}
+
+button {
+    width: 90px;
+}
+
+.actions {
+    margin-bottom: 13px;
+}
+
+.pagination {
+    border: 1px solid rgb(146, 145, 145);
+    border-radius: 0px;
+}
+
+.mat-paginator-range-label {
+    display: none;
+}
+
+@media all and (min-width: 959px) {
+  
+   span {font-size: 15px;}
+    i{font-size:  20px;}
+    .form-control {
+        width: 70px;
+    }
+    .page {
+      width: 25px;
+      margin: 5px;
+    }
+    .SmallScreen{ display: none;}
+    .largeScreen {display: inline;}
+}
+
+
+@media all and (max-width: 1440px) {
+   
+    span {font-size: 15px;}
+   i{font-size:  15px;}
+   .form-control {
+    width: 70px;
+   }
+   .page {
+     width: 25px;
+     margin: 3px;
+   }
+   .SmallScreen{ display: none;}
+   .largeScreen {
+        display: inline;
+    }
+    .pages {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .items {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+}
+
+@media all and (max-width: 800px) {
+    span {font-size: 12px;}
+    i{font-size:  13px;}
+    .form-control {
+        width: 60px;
+    }   
+    button {
+        padding: 5px;
+    }
+    .page {
+        width: 15px;
+        margin: 3px;
+    }
+    .SmallScreen{ display: none;}
+    .largeScreen {
+        display: inline;
+    }   
+    .pages {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .items {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+}
+
+@media all and (max-width: 500px) {
+ 
+.form-control {
+    width: 45px;
+    font-size: 10px;
+    height: 30px;
+}
+    span {font-size: 11px;}
+    i{font-size: 12px;}
+    button {
+        padding: 4px;
+    }
+    .page {
+        width: 15px;
+        margin: 0px;
+    }
+    .SmallScreen{
+        display: inline;
+    }
+    .middle-pagination {
+        font-size: 10px;
+    }
+    .items {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .largeScreen {display: none;}
+    .pages {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}
+
+@media all and (max-width: 390px) {
+ 
+    .form-control {
+        width: 40px;
+        font-size: 10px;
+        height: 30px;
+    }
+    span {font-size: 11px;}
+    i{font-size: 12px;}
+    .page {
+         width: 15px;
+        margin: 0px;
+    }
+    .middle-pagination {
+        font-size: 9px;
+    }
+    .SmallScreen{
+        display: inline;
+    }
+    .largeScreen {display: none;}
+    .items {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    .pages {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}
+
+@media all and (max-width: 335px) {
+ 
+    .form-control {
+        width: 35px;
+        font-size: 10px;
+        height: 30px;
+    }
+    span {font-size: 10px;}
+    i{font-size: 12px;}
+    .page {
+         width: 15px;
+        margin: 0px;
+    }
+    .middle-pagination {
+        font-size: 9px;
+    }
+    .SmallScreen{
+        display: inline;
+    }
+    .items {
+        padding-left: 2px;
+    }
+    .largeScreen {display: none;}
+    .pages {
+        padding: 0px;
+    }
+}

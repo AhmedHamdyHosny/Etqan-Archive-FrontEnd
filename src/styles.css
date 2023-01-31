@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "~ag-grid-community/styles//ag-grid.css";
+@import "~ag-grid-community/styles//ag-theme-alpine.css";
+@import "~@ng-select/ng-select/themes/default.theme.css"; 
+@import "../node_modules/ng-pick-datetime-ex/assets/style/picker.min.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

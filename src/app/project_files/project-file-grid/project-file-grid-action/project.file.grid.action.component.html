@@ -1,0 +1,23 @@
+<div>
+  <button
+    (click)="onDetail()"
+    class="mx-1 py-0 btn detailBtn mb-1"
+    type="button"
+  >
+    {{ "تفاصيل" | translate }}
+  </button>
+  <button
+    type="button"
+    class="btn mx-1 py-0 mb-1 btn-primary"
+    (click)="onEdit()"
+  >
+    {{ "تعديل" | translate }}
+  </button>
+  <a
+    type="button"
+    class="btn icon mx-1 py-0 mb-1 btn-primary"
+    (click)="onCopyLink()"
+  >
+    <i class="fas fa-link"></i>
+  </a>
+</div>

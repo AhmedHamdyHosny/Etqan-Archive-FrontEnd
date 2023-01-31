@@ -1,0 +1,32 @@
+.wrapper {
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+.loginBtn {
+  background-color: #f4901c;
+  color: white;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  border-radius: 0.125rem;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.loginBtn:hover {
+  box-shadow: 0px 5px 10px 4px rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.loginBtn:active {
+  background-color: #17a2b8;
+}

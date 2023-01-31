@@ -1,0 +1,18 @@
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.input-border {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.trigger {
+  border: rgb(212, 210, 210) 1px solid;
+}
+
+.trigger:hover {
+  border: rgb(212, 210, 210) 1px solid;
+  background-color: lightgray;
+}

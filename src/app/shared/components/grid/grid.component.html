@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-12 actions mt-1">
+    <button
+      *ngIf="AddBtn"
+      class="btn btn-primary px-auto"
+      type="button"
+      (click)="onAddRow()"
+    >
+      {{ "إضافة" | translate }}
+    </button>
+    <div class="mx-1 d-inline"></div>
+    <button
+      *ngIf="deleteBtn"
+      class="btn btn-danger"
+      type="button"
+      (click)="onDeleteRow()"
+    >
+      {{ "حذف" | translate }}
+    </button>
+  </div>
+
+  <ag-grid-angular
+    [ngStyle]="style"
+    (selectionChanged)="onSelectionChanged()"
+    style="width: 100%"
+    (gridReady)="onGridReady($event)"
+    onFirstDataRendered="onFirstDataRendered($event)"
+    #agGrid
+    [gridOptions]="gridOptions"
+    (filterChanged)="onFilterChanged($event)"
+    (sortChanged)="onSortChanged($event)"
+    class="mt-2 grid ag-theme-alpine col-12"
+  >
+  </ag-grid-angular>
+</div>
+
+<div
+  *ngIf="showSelectedItemsNumber"
+  class="row pagination d-flex px-1 m-0 mb-1"
+>
+  <span>{{ "تم تحديد" | translate }}: {{ NoSelectedItems }}</span>
+</div>
+
+<div class="pagination pb-2 m-0 mb-1" *ngIf="storageService.gridLoader ">
+  <app-grid-loader></app-grid-loader>
+</div>
+
+<mat-paginator
+
+  #paginator
+  *ngIf="gridOptions.pagination"
+  [ngClass]="{'d-none': storageService.gridLoader}"
+  [length]="totalItems"
+  [pageSize]="pageSize"
+  (page)="onPaginationChanged($event)"
+  [showFirstLastButtons]="true"
+  [pageSizeOptions]="[10, 20, 50, 100]"
+  aria-label="Select page"
+>
+</mat-paginator>

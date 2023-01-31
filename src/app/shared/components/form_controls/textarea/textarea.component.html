@@ -1,0 +1,34 @@
+<label
+  [ngClass]="{
+    'text-danger':
+      (!textarea.valid && textarea.touched) ||
+      (!textarea.valid && form?.submitted)
+  }"
+  for="note"
+  >{{ label | translate }}<span *ngIf="required"> *</span></label
+>
+<textarea
+  class="form-control"
+  [ngClass]="{
+    'ng-touched':
+      (!textarea.valid && textarea.touched) ||
+      (!textarea.valid && form?.submitted)
+  }"
+  [cols]="cols"
+  [rows]="rows"
+  (input)="validation()"
+  (focusout)="validation()"
+  [pattern]="pattern"
+  [disabled]="disabled"
+  [required]="required"
+  [(ngModel)]="TextareaValue"
+  #textarea="ngModel"
+></textarea>
+
+<span
+  class="form-text text-danger"
+  *ngIf="
+    (!textarea.valid && textarea.touched) || (!textarea.valid && form?.submitted)
+  "
+  >{{ textErrorMsg }}</span
+>

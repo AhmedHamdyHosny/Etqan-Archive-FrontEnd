@@ -1,0 +1,61 @@
+<div class="wrapper d-flex justify-content-center padding-top padding-bottom">
+  <form
+    (ngSubmit)="onSubmit(form)"
+    #form="ngForm"
+    class="text-center border border-secondary rounded p-5"
+  >
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="h4 mb-4">تسجيل الدخول</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 form-group">
+        <input
+          type="email"
+          name="email"
+          #email="ngModel"
+          class="form-control"
+          required
+          [(ngModel)]="userEmail"
+          email
+          placeholder="البريد إلكتروني"
+          autocomplete="off"
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="text-danger text-end"
+        >
+          <div *ngIf="email.errors?.['required']">البريد الالكتروني مطلوب.</div>
+          <div *ngIf="email.errors?.['email']">بريد إلكتروني خاطئ.</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 form-group">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          #password="ngModel"
+          password
+          required
+          [(ngModel)]="userPassword"
+          placeholder="كلمة المرور"
+        />
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="text-danger text-end"
+        >
+          <div *ngIf="password.errors?.['required']">كلمة المرور مطلوبة.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col">
+        <button class="btn btn-primary" type="submit">تسجيل الدخول</button>
+      </div>
+    </div>
+  </form>
+</div>

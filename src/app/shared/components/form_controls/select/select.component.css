@@ -1,0 +1,43 @@
+/* .ng-invalid.ng-touched>.ng-select-container {
+  border: 1px solid red !important;
+  border-radius: .25rem !important;
+} */
+
+.ng-invalid.ng-touched {
+  border: 1px solid red !important;
+  border-radius: .25rem !important;
+}
+
+.bootstrap-select .hidden{
+  display: none;
+}
+
+.input-group i { 
+  position: absolute; 
+} 
+
+.icon::before{
+background-color: white;
+padding: 10px; 
+}
+
+.icon { 
+  color: red;
+  z-index: 3;
+} 
+
+.input-text-en { 
+  text-align: left; 
+}
+
+.input-text-ar { 
+  text-align: right; 
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 2pt rgb(169, 218, 238);
+}
