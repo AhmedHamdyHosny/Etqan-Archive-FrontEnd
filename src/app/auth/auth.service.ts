@@ -79,42 +79,4 @@ export class AuthService {
       this.logout();
     }, duration);
   }
-
-  // getAuthToken(): string | null {
-  //   let tokenJson: string | null = localStorage.getItem('etqanArchiveToken');
-  // if (tokenJson) {
-  //   let tokendata:
-  //     | {
-  //         accessToken: string;
-  //         refreshToken: string;
-  //         expireDate: string;
-  //       }
-  //     | undefined = JSON.parse(tokenJson);
-  //   return tokendata?.accessToken ?? null;
-  // this.tokendata = JSON.parse(tokenJson);
-  // return this.tokendata?.accessToken ?? null;
-  // }
-  //   return null;
-  // }
-
-  // refreshToken(accessToken: string, refreshToken: string): Observable<any> {
-  //   return this.http
-  //     .post(environment.ApiUrl + 'account/RefreshToken', {
-  //       accessToken: accessToken,
-  //       refreshToken: refreshToken,
-  //     })
-  //     .pipe(
-  //       map((data: any) => {
-  //         if (data.result) {
-  //           const user = {
-  //             accessToken: data.result.accessToken,
-  //             refreshToken: data.result.refreshToken,
-  //             expireDate: data.result.expireDate,
-  //           };
-  //           localStorage.removeItem('etqanArchiveToken');
-  //           localStorage.setItem('etqanArchiveToken', JSON.stringify(user));
-  //         }
-  //       })
-  //     );
-  // }
 }

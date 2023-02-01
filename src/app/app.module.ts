@@ -55,8 +55,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime-ex'
     ProjectFileGridActionComponent,
     ProjectFileAddComponent,
     ProjectFileEditComponent,
-    ProjectFileDetailComponent
-    
+    ProjectFileDetailComponent,
   ],
   imports: [
     BrowserModule,

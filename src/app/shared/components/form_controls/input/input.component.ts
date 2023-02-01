@@ -33,6 +33,7 @@ export class InputComponent
 {
   @Input() pattern:string | RegExp = '';
   @Input() disabled: boolean = false;
+  @Input() fileExtension: boolean = false;
   @Input() minlength: number = 0;
   @Input() inputType = 'text';
   @Input() step: number | undefined;
@@ -51,8 +52,8 @@ export class InputComponent
 
   @Input() form!: NgForm;
   @ViewChild('fieldInput') control!: UntypedFormControl;
-  textErrorMsg: string = 'This field is required';
-  @Input() requiredErrorMsg: string = 'This field is required';
+  textErrorMsg: string = 'مطلوب الادخال';
+  @Input() requiredErrorMsg: string = 'مطلوب الادخال';
   @Input() foriddenNameErrorMsg: string = 'This name is forbidden';
   @Input() patternErrorMsg: string = 'Invalid pattern';
   rtl = 'ltr';
@@ -86,15 +87,12 @@ export class InputComponent
     if (Error && Error['pattern'] && Error['pattern']['requiredPattern']) {
       this.textErrorMsg = this.patternErrorMsg;
     }
-
     if (Error && Error['nameIsForbidden']) {
       this.textErrorMsg = this.foriddenNameErrorMsg;
     }
-
     if (Error && Error['email']) {
       this.textErrorMsg = 'Email is not valid';
     }
-
     if (this.inputType == 'password') {
       if (Error && Error['invalidPassword']) {
         this.textErrorMsg = 'invalid password format';
@@ -104,9 +102,11 @@ export class InputComponent
         this.textErrorMsg = 'Password Not Match';
       }
     }
-
     if (Error && Error['required']) {
       this.textErrorMsg = this.requiredErrorMsg;
+    }
+    if(Error && Error['invalidFileExtension']){
+      this.textErrorMsg = 'مسار الملف المدخل خطأ';
     }
   }
 

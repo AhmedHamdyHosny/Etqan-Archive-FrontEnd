@@ -1,4 +1,4 @@
-<div class="container pt-5 pb-5 mt-5 mb-5">
+<div class="container">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="row flex-column flex-md-row">
       <div class="col">
@@ -6,6 +6,7 @@
           label="المشروع"
           [menuItems]="filterData.projects"
           [form]="form"
+          [required]="true"
           name="projectId"
           [(ngModel)]="filterModel!.projectId"
         >
@@ -31,15 +32,19 @@
         >
         </app-select>
       </div>
-      <div class="col">
-        <app-select
-          label="صيغة الملف"
-          [menuItems]="filterData.fileExtensions"
-          [form]="form"
-          name="fileExtensionId"
-          [(ngModel)]="filterModel!.fileExtensionId"
+    </div>
+    <div class="row my-2">
+      <div class="col col-md-8">
+        <label for="fileExtensionIds">صيغة الملف</label>
+        <ng-select
+          [items]="filterData.fileExtensions"
+          bindLabel="text"
+          bindValue="value"
+          name="fileExtensionIds"
+          [multiple]="true"
+          [(ngModel)]="filterModel!.fileExtensionIds"
         >
-        </app-select>
+        </ng-select>
       </div>
     </div>
     <div class="row mt-4 flex-column flex-md-row">
@@ -64,6 +69,7 @@
   </form>
 
   <div class="row d-flex mt-5">
+    <div *ngIf="projectFileViews.length == 0" class="no-result">لا توجد نتيجه للبحث</div>
     <div *ngFor="let item of projectFileViews" class="card project-item">
       <div class="card-body">
         <h5 class="card-title fw-bold fs-5">{{ item.contentTitle ?? '' }}</h5>
@@ -86,15 +92,7 @@
     </div>
   </div>
 
-  <div class="row">
-    <ngb-pagination
-    *ngIf="paging.totalItemsCount > 0"
-    class="d-flex justify-content-center mt-5 text-black-50"
-    [collectionSize]="paging.totalItemsCount"
-    [(page)]="paging.page"
-    [maxSize]="4"
-    [pageSize]="filterModel.pageSize"
-    (pageChange)="onPageChanged($event)"
-  ></ngb-pagination>
-  </div>
+  <button
+  *ngIf="showMoreBtn"
+   (click)="showMore()" class="btn btn-primary">المزيد</button>
 </div>

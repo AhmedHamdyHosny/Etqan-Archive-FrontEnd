@@ -28,8 +28,8 @@ export class SelectComponent implements OnInit, OnDestroy, ControlValueAccessor 
   @Input()  bindLabel: any;
   @Input()  clearable: any = true;;
 
-  @Input()  requiredErrorMsg: string = 'This field is required';
-  errorMsg = 'This field is required';
+  @Input()  requiredErrorMsg: string = 'مطلوب الادخال';
+  errorMsg = 'مطلوب الادخال';
 
   @ViewChild('select') control!: UntypedFormControl
   

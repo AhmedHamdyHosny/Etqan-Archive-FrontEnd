@@ -9,3 +9,15 @@
     margin: 5px;
   }
 }
+
+.container{
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.no-result{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 100px;
+  color: rgb(148, 148, 148);
+}

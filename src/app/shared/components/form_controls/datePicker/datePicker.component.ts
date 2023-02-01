@@ -65,9 +65,9 @@ export class DatePickerComponent
 
   @ViewChild('fieldInput') control!: UntypedFormControl;
 
-  errorMsg: string = 'This field is required';
+  errorMsg: string = 'مطلوب الادخال';
 
-  @Input() requiredErrorMsg: string = 'This field is required';
+  @Input() requiredErrorMsg: string = 'مطلوب الادخال';
 
   constructor(
     private ngbCalendar: NgbCalendar,

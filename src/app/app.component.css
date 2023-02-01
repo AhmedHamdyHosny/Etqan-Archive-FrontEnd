@@ -18,144 +18,12 @@ ul {
   list-style: none;
 }
 
-.footer-top,
-.footer-bottom-area,
-.footer-top .links,
-.social-icons,
 .header-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-}
-
-*::-webkit-scrollbar-track {
-  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
-  background-color: transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 4px;
-  background-color: transparent;
-}
-
-.footer-section {
-  position: relative;
-  background: #0b0b0b;
-  color: #ffffff;
-}
-
-.footer-top,
-.footer-bottom-area {
-  position: relative;
-  z-index: 1;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.footer-bottom-area {
-  -ms-flex-wrap: wrap-reverse;
-  flex-wrap: wrap-reverse;
-}
-
-.footer-top {
-  border-bottom: 1px solid #f4901c;
-  padding-bottom: 10px;
-}
-
-.footer-top > * {
-  padding-bottom: 20px;
-  margin-bottom: 0;
-}
-
-.footer-bottom {
-  padding: 25px 0;
-}
-
-.footer-bottom .footer-bottom-area {
-  margin-bottom: -25px;
-}
-
-.footer-bottom p {
-  margin: 0;
-}
-
-.footer-bottom p a {
-  color: #31d7a9;
-}
-
-.footer-bottom .left {
-  margin-bottom: 25px;
-}
-
-.footer-top .left p {
-  max-width: 600px;
-}
-
-.footer-top .links {
-  margin: 0 -15px;
-  margin-bottom: 25px;
-}
-
-.footer-top .links li {
-  padding: 0 15px;
-}
-
-.footer-top .links li a {
-  color: #ffffff;
-}
-
-.app-btn-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0px;
-  gap: 16px;
-}
-
-.app-btn-col .app-btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #fff;
-  text-align: left;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 10px;
-  padding: 10px 5px;
-  border: 1px solid white;
-  width: 150px;
-}
-
-.app-btn-col .app-btn i {
-  text-align: center;
-  font-size: 25px;
-  margin-right: 7px;
-}
-
-.app-btn-col .app-btn p {
-  line-height: initial;
-}
-
-.app-btn-col .app-btn .big-txt {
-  font-size: 17px;
-  text-transform: capitalize;
-  display: block;
-}
-
-.social-icons {
-  margin: -7.5px;
-}
-
-.social-icons li a {
-  width: 36px;
-  height: 36px;
-  text-align: center;
-  color: #f4901c;
-  font-size: 20px;
 }
 
 .header-wrapper {
@@ -208,24 +76,6 @@ ul {
   font-size: 18px;
   font-weight: 800;
   text-transform: uppercase;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 4;
-  display: none;
-}
-
-.overlay.active {
-  display: block;
-  animation-name: fadeIn;
-  -webkit-animation-name: fadeIn;
-  -moz-animation-name: fadeIn;
 }
 
 /***** Sidebar *****/

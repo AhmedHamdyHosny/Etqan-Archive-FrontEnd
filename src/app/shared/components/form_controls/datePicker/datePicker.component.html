@@ -7,8 +7,7 @@
   >{{ label | translate }}<span *ngIf="required"> *</span></label
 >
 
-<div class="d-flex">
-  <div class="input-group">
+  <div class="date-input-group">
     <input
       class="form-control"
       [ngClass]="{
@@ -38,12 +37,11 @@
       #dt1
     ></owl-date-time>
 
-    <div class="input-group-append ">
+    <div class="input-group-append">
       <button class="btn trigger" [owlDateTimeTrigger]="dt1" type="button">
         <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
       </button>
     </div>
   </div>
-</div>
 
 <span class="form-text text-danger" *ngIf="!fieldInput.valid && fieldInput.touched || !fieldInput.valid && form.submitted">{{errorMsg}}</span> 

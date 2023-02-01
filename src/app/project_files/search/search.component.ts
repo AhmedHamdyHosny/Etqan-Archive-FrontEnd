@@ -31,20 +31,22 @@ export class SearchComponent implements OnInit, OnDestroy {
     fileExtensions: [],
   };
 
+  showMoreBtn : boolean = false;
+
   filterModel: {
     pageSize: number;
     pageNumber: number;
     projectId: string | undefined;
     contentTypeId: string | undefined;
-    fileExtensionId: string | undefined;
-    categoryId: string | undefined;
+    fileExtensionIds: string[];
+    categoryId: string| undefined;
     keyWordsList: { label: string }[];
     keyWords: string;
   } = {
     pageSize: 20,
     pageNumber: 1,
     projectId: undefined,
-    fileExtensionId: undefined,
+    fileExtensionIds: [],
     contentTypeId: undefined,
     categoryId: undefined,
     keyWordsList: [],
@@ -64,31 +66,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getFilterData(this.paging.page);
-  }
-
-  getFilterData(page: number) {
-    this.filterModel.pageNumber = page;
     this.getFiltersSub = this.projectFileService.getFilters().subscribe({
       next: (data: any) => {
         this.filterData = data.result;
       },
     });
-  }
-
-  getProjectFiles() {
-    this.getDataSub = this.projectFileService
-      .getProjectFiles(this.filterModel)
-      .subscribe({
-        next: (data: any) => {
-          this.paging.totalItemsCount = data.result.totalItemsCount;
-          this.projectFileViews = data.result.pageItems;
-        },
-      });
-  }
-
-  onPageChanged(page: number) {
-    this.getFilterData(page);
   }
 
   routeToFileDetail(item: ProjectFileView) {
@@ -106,12 +88,34 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.toastr.error('لا يوجد مسار للملف');
     }
   }
-
+  
   onSubmit(form: NgForm) {
-    this.filterModel.keyWords = this.filterModel.keyWordsList
-      .map((e) => e.label)
-      .join(',');
-    this.getProjectFiles();
+    if (form.valid) {
+      this.filterModel.keyWords = this.filterModel.keyWordsList
+        .map((e) => e.label)
+        .join(',');
+      this.getProjectFiles(this.paging.page);
+    }
+  }
+
+  getProjectFiles(page: number) {
+    this.filterModel.pageNumber = page;
+    this.getDataSub = this.projectFileService
+      .getProjectFiles(this.filterModel)
+      .subscribe({
+        next: (data: any) => {
+          this.paging.totalItemsCount = data.result.totalItemsCount;
+          let pages = Math.ceil(this.paging.totalItemsCount / this.filterModel.pageSize);
+
+          this.showMoreBtn = this.paging.page < pages ? true: false;
+          this.projectFileViews = data.result.pageItems;
+        },
+      });
+  }
+  
+  showMore(){
+    this.paging.page++;
+    this.getProjectFiles(this.paging.page);
   }
 
   ngOnDestroy(): void {

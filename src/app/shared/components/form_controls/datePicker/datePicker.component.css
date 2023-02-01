@@ -1,15 +1,27 @@
 
-input.ng-invalid.ng-touched {
-  border: 1px solid red;
+
+.date-input-group {
+  position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
 }
 
-.input-border {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+  
+}
+
 
 .trigger {
   border: rgb(212, 210, 210) 1px solid;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .trigger:hover {

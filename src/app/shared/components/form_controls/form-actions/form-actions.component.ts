@@ -57,9 +57,9 @@ export class FormActionsComponent implements OnInit, OnDestroy {
       if (this.form.dirty && this.alerts) {
         this.dialogRef = this.dialog.open(DialogComponent, {
           data: {
-            Header: 'Confirmation',
-            Text: 'Data_Discard_Confirm_Error_Msg',
-            yesBtnValue: 'Agree',
+            Header: 'تأكيد',
+            Text: 'هل أنت متأكد أنك تريد تجاهل هذه البيانات؟',
+            yesBtnValue: 'أوافق',
           },
           autoFocus: false,
         });

@@ -25,9 +25,9 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
   
   // textAlignLeft;
   @ViewChild('textarea') control!: UntypedFormControl
-  textErrorMsg:string = 'This field is required';
+  textErrorMsg:string = 'مطلوب الادخال';
 
-  @Input()  requiredErrorMsg: string = 'This field is required';
+  @Input()  requiredErrorMsg: string = 'مطلوب الادخال';
   @Input()  foriddenNameErrorMsg: string = 'This name is forbidden';
   @Input()  patternErrorMsg: string = 'No spaces allowed at the begining and the end of a text';
 
