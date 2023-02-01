@@ -1,0 +1,32 @@
+<div *ngIf="detailsUser">
+    <div class="row form-group">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+            <app-detail-text
+            [label] = "'Created_by'"
+            [value]="detailsUser!.createdBy ?? ''"
+            >
+            </app-detail-text>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+            <app-detail-text
+            [label] = "'Created_on'"
+            [value]="detailsUser!.createdOn  ?? ''"
+            >
+            </app-detail-text>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+            <app-detail-text
+            [label] = "'Modefied_by'"
+            [value]="detailsUser!.modefiedBy  ?? ''"
+            >
+            </app-detail-text>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <app-detail-text
+            [label] = "'Modefied_on'"
+            [value]="detailsUser!.modefiedOn ?? ''"
+            >
+            </app-detail-text>
+        </div>
+    </div>
+</div>

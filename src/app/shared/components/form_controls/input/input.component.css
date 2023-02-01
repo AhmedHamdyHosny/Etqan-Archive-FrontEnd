@@ -1,0 +1,64 @@
+
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+  border-radius: .25rem;
+}
+
+
+input.invalid {
+  border: 1px solid red;
+  border-radius: .25rem;
+}
+
+.fa-info {
+  margin: 4px;
+  padding: 8px;
+  color: #fff;
+  cursor: pointer;
+  background-color: rgb(214, 57, 57);
+  border-radius: 100%;
+  font-size: 12px;
+  
+}
+
+.fa-info:hover{
+  background-color:  rgb(230, 81, 81);
+}
+
+.input-group i { 
+  position: absolute; 
+} 
+
+
+.icon::before{
+background-color: white;
+padding: 10px; 
+}
+
+.icon { 
+  z-index: 3;
+} 
+
+label{
+ text-align: left;
+}
+
+ul {
+  list-style: inside;
+  margin-left: 10px;
+  padding: 0; 
+  text-align: left;
+}
+
+.password {
+z-index: 100 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 3pt 2pt rgb(169, 218, 238);
+}

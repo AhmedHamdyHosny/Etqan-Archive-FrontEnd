@@ -1,0 +1,32 @@
+.btn-cancel {
+    background-color: lightgray;
+    margin-right: 5px;
+    padding: 10px;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-cancel:hover {
+background-color: darkgray;
+}
+
+.btn-container {
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+
+.btn-save {
+    padding: 10px;
+    color: black;
+}
+
+button {
+    width: 140px;
+}
+
+@media all and (max-width: 500px) {
+button {
+    width: 100%;
+}
+}

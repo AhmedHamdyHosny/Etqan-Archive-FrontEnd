@@ -1,0 +1,161 @@
+
+
+<app-loading-icon *ngIf="isLoading"></app-loading-icon>
+
+<div dir="rtl" class="body">
+  <!-- ==========Overlay========== -->
+  <div class="overlay"></div>
+  <!-- ==========Overlay========== -->
+
+  <!-- Sidebar -->
+  <nav class="sidebar light">
+    <div class="dismiss-sidebar" (click)="dismissSidebar()">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <div class="logo" routerLink="/home">
+      <a class="navbar-brand" href="#">Etqan</a>
+      <!-- <img src="./assets/images/ticketlineLogo.png" alt="logo" /> -->
+    </div>
+
+    <ul class="list-unstyled menu-elements">
+      <li routerLink="/search" routerLinkActive="active">
+        <a> {{ "الرئيسية" | translate }}</a>
+      </li>
+      <li routerLink="/project/index" routerLinkActive="active">
+        <a>
+          {{ "المشاريع" | translate }}
+        </a>
+      </li>
+      <li routerLink="/project-file/index" routerLinkActive="active">
+        <a>
+          {{ "الملفات" | translate }}
+        </a>
+      </li>
+      <li routerLink="/category/index" routerLinkActive="active">
+        <a>
+          {{ "فئات الملفات" | translate }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- End sidebar -->
+
+  <!-- Sidebar Dark overlay -->
+  <div (click)="dismissSidebar()" class="sidebar-overlay"></div>
+
+  <!-- ==========Header-Section========== -->
+  <header
+    class="header-section"
+  >
+    <div class="container">
+      <div class="header-wrapper">
+        <div class="d-flex align-items-center">
+          <div class="logo">
+            <!-- <a > -->
+            <a routerLink="/search" class="navbar-brand text-white p-2">Etqan</a>
+            <!-- <img src="./assets/images/ticketlineLogo.png" alt="logo" /> -->
+            <!-- </a> -->
+          </div>
+          <a *ngIf="user" class="open-menu" (click)="openSidebar()" type="button">
+            <i class="text-white fas fa-2x fa-align-left"></i>
+          </a>
+        </div>
+        <div *ngIf="user" class="header-button btn btn-outline-danger pr-0">
+          <a (click)="signOut()">تسجيل خروج</a>
+        </div>
+        <div *ngIf="!user" class="header-button btn btn-outline-primary pr-0">
+          <a routerLink="/login">تسجيل الدخول</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ==========Header-Section========== -->
+
+  <router-outlet></router-outlet>
+
+  <!-- <footer class="footer-section padding-top">
+      <div class="container">
+        <div class="footer-top">
+          <div class="left">
+            <p>
+              Design amazing digital experiences that create more happy in the
+              world.
+            </p>
+            <ul class="links">
+              <li>
+                <a routerLink="/about-us">{{ "About_Us" | translate }}</a>
+              </li>
+              <li>
+                <a routerLink="/contact-us">{{ "Contact_Us" | translate }}</a>
+              </li>
+              <li>
+                <a routerLink="/terms-conditions">{{
+                  "Terms_Of_Use" | translate
+                }}</a>
+              </li>
+              <li>
+                <a routerLink="/privacy-policy">{{
+                  "Privacy_Policy" | translate
+                }}</a>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="d-felx justify-content-end">
+            <p>{{'Get_The_App' | translate}}</p>
+            <div class="app-btn-col">
+              <a dir="ltr" class="app-btn" href="http:apple.com">
+                <i class="fab fa-apple"></i>
+                <p>Download on the <span class="big-txt">App Store</span></p>
+              </a>
+  
+  
+              <a dir="ltr" class="app-btn" href="http:google.com">
+                <i class="fab fa-google-play"></i>
+                <p>Get it on <span class="big-txt">Google Play</span></p>
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="footer-bottom">
+          <div class="footer-bottom-area mb-4">
+            <div class="left">
+              <p>
+                Copyright © 2022.All Rights Reserved By
+                <a href="">Tazkara Online </a>
+              </p>
+            </div>
+            <ul class="social-icons">
+              <li class="p-2">
+                <a href="" placement="top" ngbTooltip="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="p-2">
+                <a href="" placement="top" ngbTooltip="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="p-2">
+                <a href="" placement="top" ngbTooltip="Pinterest">
+                  <i class="fab fa-pinterest-p"></i>
+                </a>
+              </li>
+              <li class="p-2">
+                <a href="" placement="top" ngbTooltip="Google">
+                  <i class="fab fa-google"></i>
+                </a>
+              </li>
+              <li class="p-2">
+                <a href="" placement="top" ngbTooltip="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+</div>

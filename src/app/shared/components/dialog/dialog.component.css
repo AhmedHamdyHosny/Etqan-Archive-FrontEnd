@@ -1,0 +1,50 @@
+:host {
+overflow-x: hidden;
+}
+
+
+.cancelBtn {
+    background-color: lightgray;
+}
+
+button.xBtn:hover {
+    background-color: rgb(238, 1, 1);
+}
+
+@media all and (max-width: 500px) {
+    .actionBtn {
+    width: 100%;
+}
+}
+
+button.xBtn {
+    vertical-align: middle;
+    padding-bottom:0px ;
+    padding-top: 0px;
+    color: white;
+}
+
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 2%;
+  
+}
+
+.header {
+    background-color: rgb(180, 12, 12);
+    color: white;
+    padding: 16px 10px 10px 10px;
+    /* margin-bottom: 0px; */
+    width: auto;
+}
+
+.dialog-content {
+    padding: 15px;
+    padding-bottom: 0px;
+    width: auto;
+}
+
+
+.multi_lines_text { 
+    white-space: pre-line; 
+}

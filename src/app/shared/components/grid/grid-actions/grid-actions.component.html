@@ -1,0 +1,20 @@
+
+<div *ngIf="!editOnly && !detailOnly" ngbDropdown  container="body">
+    <button (click)="onDetail()" class="mx-1 py-0 btn detailBtn mb-1" type="button">
+        {{"Details" | translate}}
+    </button>
+    <button type="button" class="btn mx-1 py-0 mb-1 btn-primary"  ngbDropdownToggle>{{'Actions' | translate}}</button>
+    <ul  class="drobdown-menu p-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <li ngbDropdownItem class="drobdown-item" (click)="onEdit()">{{"Edit" | translate}}</li>
+    </ul>
+</div>
+
+<div *ngIf="editOnly">
+    <button type="button" class="btn mx-1 py-0 mb-1 btn-primary" (click)="onEdit()">{{"Edit" | translate}}</button>
+</div>
+
+<div *ngIf="detailOnly">
+    <button (click)="onDetail()" class="mx-1 py-0  mb-1 btn detailBtn" type="button">
+        {{"Details" | translate}}
+    </button>
+</div>

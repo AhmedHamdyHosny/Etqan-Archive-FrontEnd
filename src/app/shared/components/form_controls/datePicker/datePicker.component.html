@@ -1,0 +1,49 @@
+<label
+  [ngClass]="{
+    'text-danger':
+      (!fieldInput.valid && fieldInput.touched) ||
+      (!fieldInput.valid && form.submitted)
+  }"
+  >{{ label | translate }}<span *ngIf="required"> *</span></label
+>
+
+<div class="d-flex">
+  <div class="input-group">
+    <input
+      class="form-control"
+      [ngClass]="{
+        'ng-touched':
+          (!fieldInput.valid && fieldInput.touched) ||
+          (!fieldInput.valid && form.submitted)
+      }"
+      [(ngModel)]="InputValue"
+      #fieldInput="ngModel"
+      (input)="validation()"
+      (dateTimeInput)="validation()"
+      (focusout)="validation()"
+      [disabled]="disabled"
+      [min]="min"
+      [max]="max"
+      [required]="required"
+      [owlDateTime]="dt1"
+      [owlDateTimeTrigger]="dt1"
+    />
+
+    <owl-date-time
+      pickerType="calendar"
+      [disabled]="disabled"
+      ngDefaultControl
+      [(ngModel)]="InputValue"
+      [hour12Timer]="true"
+      #dt1
+    ></owl-date-time>
+
+    <div class="input-group-append ">
+      <button class="btn trigger" [owlDateTimeTrigger]="dt1" type="button">
+        <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<span class="form-text text-danger" *ngIf="!fieldInput.valid && fieldInput.touched || !fieldInput.valid && form.submitted">{{errorMsg}}</span> 

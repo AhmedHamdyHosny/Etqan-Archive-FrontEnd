@@ -1,0 +1,118 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md col-lg">
+      <h4>{{ "تفاصيل ملف المشروع" | translate }}</h4>
+      <hr />
+      <br />
+    </div>
+  </div>
+
+  <div class="row flex-column flex-md-row">
+    <div class="col form-group">
+
+      <div>
+        <app-detail-text
+          label="المشروع"
+          name="projectId"
+          [value]="projectFile!.projectName"
+        >
+        </app-detail-text>
+      </div>
+
+      <div>
+        <app-detail-text
+          label="نوع المحتوى"
+          name="contentTypeId"
+          [value]="projectFile!.contentTypeName"
+        >
+        </app-detail-text>
+      </div>
+
+      <div>
+        <app-detail-text
+          label="فئة المحتوى"
+          name="categoryId"
+          [value]="projectFile!.categoryName"
+        >
+        </app-detail-text>
+      </div>
+
+      <div>
+        <app-detail-text
+          label="مسار الملف"
+          inputType="text"
+          name="filePath"
+          [value]="projectFile!.filePath"
+        >
+        </app-detail-text>
+      </div>
+
+      <div>
+        <app-detail-text
+          label="ملاحظات"
+          inputType="text"
+          name="notes"
+          [value]="projectFile!.note"
+        >
+        </app-detail-text>
+      </div>
+    </div>
+    <div class="col form-group">
+      <div>
+        <app-detail-text
+          label="تاريخ الإنتاج"
+          [value]="productionDate_str"
+          name="eventDate"
+        ></app-detail-text>
+      </div>
+
+
+      <div>
+        <app-detail-text
+          label="عنوان للمحتوى"
+          inputType="text"
+          name="contentTitle"
+          [value]="projectFile!.contentTitle"
+        >
+        </app-detail-text>
+      </div>
+      <div>
+        <label for="contentDescription">{{ "وصف المحتوى" | translate }}</label>
+        <textarea
+          class="form-control"
+          [cols]="5"
+          [rows]="3"
+          [disabled]="true"
+          name="contentDescription"
+          [(ngModel)]="projectFile!.contentDescription"
+          #textarea="ngModel"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="keyWords">الكلمات الدالة</label>
+        <ng-select
+          #keyWords="ngModel"
+          [addTag]="true"
+          name="keyWords"
+          disabled="true"
+          [hideSelected]="true"
+          [multiple]="true"
+          bindLabel="name"
+          [isOpen]="false"
+          [selectOnTab]="true"
+          [(ngModel)]="fileKeyWords"
+        >
+        </ng-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <app-form-actions
+      [actionType]="'cancel'"
+      [cancelCallback]="true"
+      (cancel)="onCancel()"
+    ></app-form-actions>
+  </div>
+</div>

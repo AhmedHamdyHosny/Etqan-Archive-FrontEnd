@@ -1,0 +1,31 @@
+<div>
+    <div mat-dialog-title  class="header d-flex justify-content-between">
+        <h3 class="mb-0 fs-2 pr-auto">{{ data.Header | translate }}</h3>
+        <button  (click)="onCancel()"  type="button" class="btn xBtn my-auto px-2 ml-auto">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="dialog-content">
+    <div class="row">
+        <div class="col">
+            <p class="multi_lines_text text-end">{{ data.Text  | translate}}</p>
+        </div>
+    </div>
+    <div class="row d-flex mt-2 mb-0  pb-0" [ngClass]="{'flex-row-reverse': isLargeScreen()}"  mat-dialog-actions>
+        <button 
+        type="button" 
+        class="btn saveBtn btn-primary mb-1 mx-2 d-flex justify-content-center col-xs-12 col-sm-12 col-md" 
+        [mat-dialog-close]="'yes'"
+        >{{yesBtnValue | translate}}
+        </button>
+    
+        <button 
+        type="button" 
+        (click)="onCancel()" 
+        *ngIf="!data.yesBtn" 
+        class="btn cancelBtn mb-1 mx-2 d-flex justify-content-center col-xs-12 col-sm-12 col-md"
+        >{{'إلغاء' | translate}}
+    </button>
+    </div>
+    </div>
+</div>

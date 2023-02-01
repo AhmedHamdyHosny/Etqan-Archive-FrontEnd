@@ -1,0 +1,11 @@
+.card.project-item {
+    width: 18rem;
+  margin: 10px;
+  font-size: 16px;
+}
+
+@media (max-width: 500px) {
+  .card.project-item {
+    margin: 5px;
+  }
+}

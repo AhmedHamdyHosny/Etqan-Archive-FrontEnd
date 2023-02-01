@@ -1,0 +1,47 @@
+<label
+  [ngClass]="{
+    'text-danger':
+      (!fieldInput.valid && fieldInput.touched) ||
+      (!fieldInput.valid && form.submitted)
+  }"
+  >{{ label | translate }}<span *ngIf="required"> *</span></label
+>
+<div class="d-flex flex-row-reverse">
+  <div class="input-group mx-auto d-flex justify-content-end">
+    <input
+      class="form-control input-text-en"
+      [ngClass]="{
+        invalid: !fieldInput.valid && form.submitted
+      }"
+      [type]="inputType"
+      (input)="onChangeEvent()"
+      [pattern]="pattern"
+      [minlength]="minlength"
+      [readonly]="disabled"
+      [required]="required"
+      [email]="email"
+      [(ngModel)]="InputValue"
+      #fieldInput="ngModel"
+      [min]="min"
+      [max]="max"
+      [maxlength]="maxlength"
+      [step]="step"
+    />
+    <i
+      *ngIf="
+        (!fieldInput.valid && fieldInput.touched && inputType != 'number') ||
+        (!fieldInput.valid && form.submitted && inputType != 'number')
+      "
+      class="mx-1 d-flex align-self-center justify-self-end fa fa-exclamation-triangle icon text-danger fa-xs"
+    ></i>
+    <i
+      *ngIf="fieldInput.valid && fieldInput.dirty && fieldInput.value && phone"
+      class="mx-1 d-flex align-self-center justify-self-end fa fa-check-circle icon text-success"
+    ></i>
+  </div>
+</div>
+<span class="form-text text-danger" *ngIf="!fieldInput.valid && fieldInput.touched || !fieldInput.valid && form.submitted">{{textErrorMsg}}</span> 
+
+<!-- 
+[password]="password"
+[passwordMatch]="confirmPassword" -->

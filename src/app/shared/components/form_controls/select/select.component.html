@@ -1,0 +1,31 @@
+<label
+  [ngClass]="{
+    'text-danger':
+      (!select.valid && select.touched) || (!select.valid && form.submitted)
+  }"
+  for="name"
+  >{{ label | translate }}<span *ngIf="required"> *</span></label
+>
+<ng-select
+  [ngClass]="{
+    'ng-touched':
+      (!select.valid && select.touched) || (!select.valid && form.submitted)
+  }"
+  [items]="menuItems"
+  bindLabel="text"
+  bindValue="value"
+  [readonly]="disabled"
+  [required]="required"
+  [(ngModel)]="SelectValue"
+  #select="ngModel"
+  [clearable]="clearable"
+  (change)="onChangeEvent()"
+  (focusout)="validation()"
+>
+</ng-select>
+
+<span
+  class="form-text text-danger"
+  *ngIf="(!select.valid && select.touched) || (!select.valid && form.submitted)"
+  >{{ errorMsg }}</span
+>
