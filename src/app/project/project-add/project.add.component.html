@@ -24,7 +24,6 @@
         <app-input
           label="الموقع"
           [form]="form"
-          [required]="true"
           inputType="text"
           name="location"
           [(ngModel)]="project!.projectLocation"
@@ -32,6 +31,8 @@
         </app-input>
       </div>
     </div>
+
+    
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8">
         <app-form-actions
