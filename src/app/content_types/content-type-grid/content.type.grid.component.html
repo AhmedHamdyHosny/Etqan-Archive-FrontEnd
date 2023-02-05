@@ -1,0 +1,25 @@
+<div class="container pt-4 padding-bottom">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg">
+        <h3>{{ "أنواع المحتوى" | translate }}</h3>
+        <hr />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-grid
+          [pageSize]="paging.pageSize"
+          [totalItems]="paging.totalItems"
+          (paginationChanged)="onPaginationChanged($event)"
+          (gridDelete)="onDeleteRows($event)"
+          (filterChanged)="onFilterChanged($event)"
+          (sortChanged)="onSortChanged($event)"
+          [gridOptions]="gridOptions"
+        ></app-grid>
+      </div>
+    </div>
+    <div style="height: 100px;"></div>
+  
+  </div>
+  
+  

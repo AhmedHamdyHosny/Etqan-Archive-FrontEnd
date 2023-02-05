@@ -15,6 +15,10 @@ import { ProjectFileEditComponent } from 'src/app/project_files/project-file-edi
 import { ProjectFileGridComponent } from 'src/app/project_files/project-file-grid/project.file.grid.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page.not.found.component';
 import { AuthGuard } from '../guard/auth.guard';
+import { ContentTypeGridComponent } from 'src/app/content_types/content-type-grid/content.type.grid.component';
+import { ContentTypeAddComponent } from 'src/app/content_types/content-type-add/content.type.add.component';
+import { ContentTypeDetailComponent } from 'src/app/content_types/content-type-detail/content.type.detail.component';
+import { ContentTypeEditComponent } from 'src/app/content_types/content-type-edit/content.type.edit.component';
 
 
 const routes: Routes = [
@@ -34,6 +38,11 @@ const routes: Routes = [
   { path: 'project-file/add', component: ProjectFileAddComponent, canActivate: [AuthGuard]},
   { path: 'project-file/:id/edit', component: ProjectFileEditComponent, canActivate: [AuthGuard]},
   { path: 'project-file/:id/detail', component: ProjectFileDetailComponent, canActivate: [AuthGuard]},
+  
+  { path: 'content-type/index', component: ContentTypeGridComponent, canActivate: [AuthGuard]},
+  { path: 'content-type/add', component: ContentTypeAddComponent, canActivate: [AuthGuard]},
+  { path: 'content-type/:id/edit', component: ContentTypeEditComponent, canActivate: [AuthGuard]},
+  { path: 'content-type/:id/detail', component: ContentTypeDetailComponent, canActivate: [AuthGuard]},
 
   { path: 'not-found', component: PageNotFoundComponent },
 

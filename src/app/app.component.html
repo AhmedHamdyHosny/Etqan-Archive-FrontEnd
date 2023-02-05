@@ -1,11 +1,8 @@
-
-
 <app-loading-icon *ngIf="isLoading"></app-loading-icon>
 
 <div dir="rtl" class="body">
-
   <!-- Sidebar -->
-  <nav class="sidebar light">
+  <nav class="sidebar">
     <div class="dismiss-sidebar" (click)="dismissSidebar()">
       <i class="fas fa-arrow-left"></i>
     </div>
@@ -24,14 +21,19 @@
           {{ "المشاريع" | translate }}
         </a>
       </li>
-      <li routerLink="/project-file/index" routerLinkActive="active">
+      <!-- <li routerLink="/project-file/index" routerLinkActive="active">
         <a>
           {{ "الملفات" | translate }}
         </a>
-      </li>
+      </li> -->
       <li routerLink="/category/index" routerLinkActive="active">
         <a>
           {{ "فئات الملفات" | translate }}
+        </a>
+      </li>
+      <li routerLink="/content-type/index" routerLinkActive="active">
+        <a>
+          {{ "أنواع المحتوى" | translate }}
         </a>
       </li>
     </ul>
@@ -42,19 +44,24 @@
   <div (click)="dismissSidebar()" class="sidebar-overlay"></div>
 
   <!-- ==========Header-Section========== -->
-  <header
-    class="header-section"
-  >
+  <header class="header-section">
     <div class="container">
       <div class="header-wrapper">
         <div class="d-flex align-items-center">
           <div class="logo">
             <!-- <a > -->
-            <a routerLink="/search" class="navbar-brand text-white p-2">Etqan</a>
+            <a routerLink="/search" class="navbar-brand text-white p-2"
+              >Etqan</a
+            >
             <!-- <img src="./assets/images/ticketlineLogo.png" alt="logo" /> -->
             <!-- </a> -->
           </div>
-          <a *ngIf="user" class="open-menu" (click)="openSidebar()" type="button">
+          <a
+            *ngIf="user"
+            class="open-menu"
+            (click)="openSidebar()"
+            type="button"
+          >
             <i class="text-white fas fa-2x fa-align-left"></i>
           </a>
         </div>
@@ -70,5 +77,4 @@
   <!-- ==========Header-Section========== -->
 
   <router-outlet></router-outlet>
-  
 </div>

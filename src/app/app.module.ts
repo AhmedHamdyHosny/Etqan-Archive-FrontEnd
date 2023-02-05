@@ -36,6 +36,11 @@ import { CategoryEditComponent } from './categories/category-edit/category.edit.
 import { CategoryGridActionComponent } from './categories/category-grid/category-grid-action/category.grid.action.component';
 import { CategoryGridComponent } from './categories/category-grid/category.grid.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime-ex';
+import { ContentTypeGridComponent } from './content_types/content-type-grid/content.type.grid.component';
+import { ContentTypeGridActionComponent } from './content_types/content-type-grid/content-type-grid-action/content.type.grid.action.component';
+import { ContentTypeAddComponent } from './content_types/content-type-add/content.type.add.component';
+import { ContentTypeEditComponent } from './content_types/content-type-edit/content.type.edit.component';
+import { ContentTypeDetailComponent } from './content_types/content-type-detail/content.type.detail.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,12 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime-ex'
     ProjectFileAddComponent,
     ProjectFileEditComponent,
     ProjectFileDetailComponent,
+    ContentTypeGridComponent,
+    ContentTypeGridActionComponent,
+    ContentTypeAddComponent,
+    ContentTypeEditComponent,
+    ContentTypeDetailComponent,
+
   ],
   imports: [
     BrowserModule,

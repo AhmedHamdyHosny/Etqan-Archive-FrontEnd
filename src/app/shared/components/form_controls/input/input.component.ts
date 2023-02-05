@@ -42,7 +42,7 @@ export class InputComponent
   @Input() maxlength:string| number | null = null;
   @Input() error: any;
 
-  @Input() label: string = '';
+  @Input() label: string | undefined;
   @Input() phone: boolean = false;
   @Input() required: boolean = false;
   @Input() email: boolean = false;

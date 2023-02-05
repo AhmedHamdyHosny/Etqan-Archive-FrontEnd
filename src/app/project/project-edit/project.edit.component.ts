@@ -62,7 +62,6 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
   onCancel() {
     this.location.back();
   }
-
   
   ngOnDestroy() {
     this.projectGetSub?.unsubscribe();

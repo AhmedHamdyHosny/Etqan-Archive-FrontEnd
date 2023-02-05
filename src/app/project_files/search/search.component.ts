@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  public advancedSearchMode = false;
+
   projectFileViews: ProjectFileView[] = [];
   getFiltersSub: Subscription | undefined;
   getDataSub: Subscription | undefined;
@@ -36,6 +38,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   filterModel: {
     pageSize: number;
     pageNumber: number;
+    search: string | undefined;
     projectId: string | undefined;
     contentTypeId: string | undefined;
     fileExtensionIds: string[];
@@ -45,6 +48,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   } = {
     pageSize: 20,
     pageNumber: 1,
+    search: undefined,
     projectId: undefined,
     fileExtensionIds: [],
     contentTypeId: undefined,
@@ -69,6 +73,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.getFiltersSub = this.projectFileService.getFilters().subscribe({
       next: (data: any) => {
         this.filterData = data.result;
+        this.getProjectFiles(this.paging.page);
       },
     });
   }
@@ -91,15 +96,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.filterModel.keyWords = this.filterModel.keyWordsList
-        .map((e) => e.label)
-        .join(',');
       this.getProjectFiles(this.paging.page);
     }
   }
 
   getProjectFiles(page: number) {
     this.filterModel.pageNumber = page;
+    this.filterModel.keyWords = this.filterModel.keyWordsList
+    .map((e) => e.label)
+    .join(',');
+
     this.getDataSub = this.projectFileService
       .getProjectFiles(this.filterModel)
       .subscribe({
@@ -111,6 +117,23 @@ export class SearchComponent implements OnInit, OnDestroy {
           this.projectFileViews = data.result.pageItems;
         },
       });
+  }
+
+  resetFilters(){
+    this.filterModel = {
+      pageSize: 20,
+      pageNumber: 1,
+      search: undefined,
+      projectId: undefined,
+      fileExtensionIds: [],
+      contentTypeId: undefined,
+      categoryId: undefined,
+      keyWordsList: [],
+      keyWords: '',
+    };
+    this.paging.page = 1;
+    this.getProjectFiles(this.paging.page);
+    
   }
   
   showMore(){
