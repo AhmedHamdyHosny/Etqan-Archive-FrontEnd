@@ -47,6 +47,7 @@ export class ContentTypeEditComponent implements OnInit, OnDestroy {
         contentTypeId: undefined,
         fileExtensionId: undefined,
         fileExtensionName: undefined,
+        contentType: undefined
       },
     ],
   };
@@ -89,12 +90,13 @@ export class ContentTypeEditComponent implements OnInit, OnDestroy {
           contentTypeId: undefined,
           fileExtensionId: undefined,
           fileExtensionName: undefined,
+          contentType: undefined
         },
       ],
     });
   }
 
-  onDeleteFileExrensionRows(selectedRows: any[]) {
+  onDeleteFileExtensionRows(selectedRows: any[]) {
     this.fileExtensionGridOptions.api?.applyTransaction({
       remove: selectedRows,
     });

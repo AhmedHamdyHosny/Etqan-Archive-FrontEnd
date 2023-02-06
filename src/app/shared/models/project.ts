@@ -1,5 +1,9 @@
-export interface Project{
-    projectId: string;
-    projectName: string;
-    projectLocation: string;
+import { ProjectFile } from "./project_file";
+
+export class Project{
+    projectId: string | undefined;
+    projectName: string| undefined;
+    projectLocation: string| undefined;
+    projectFiles: ProjectFile[] = [];
+
 }

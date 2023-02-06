@@ -1,0 +1,70 @@
+<div dir="rtl" class="container py-4">
+  <div class="row flex-column flex-md-row">
+    <div class="col">
+      <app-detail-text
+        label="فئة المحتوى"
+        [value]="data.projectFile.category?.categoryName"
+      >
+      </app-detail-text>
+    </div>
+
+    <div class="col">
+      <app-detail-text
+        label="عنوان للمحتوى"
+        [value]="data.projectFile.contentTitle"
+      >
+      </app-detail-text>
+    </div>
+  </div>
+  <div class="row flex-column flex-md-row">
+    <div class="col form-group">
+      <div>
+        <app-textarea
+          label="وصف المحتوى"
+          [disabled]="true"
+          name="contentDescription"
+          [(ngModel)]="data.projectFile!.contentDescription"
+        >
+        </app-textarea>
+      </div>
+      <!-- <div>
+        <app-detail-text
+          label="مسار الملف"
+          name="filePath"
+          [value]="data.projectFile!.filePath"
+        >
+        </app-detail-text>
+      </div> -->
+      <div>
+        <app-detail-text label="تاريخ الإنتاج" [value]="productionDate_str">
+        </app-detail-text>
+      </div>
+      <div>
+        <label for="keyWords">الكلمات الدالة </label>
+        <ng-select
+          #keyWords="ngModel"
+          [addTag]="true"
+          name="keyWords"
+          [hideSelected]="true"
+          [multiple]="true"
+          bindLabel="name"
+          disabled="true"
+          [isOpen]="false"
+          [selectOnTab]="true"
+          [(ngModel)]="fileKeyWords"
+        >
+        </ng-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-form-actions
+        [cancelCallback]="true"
+        (cancel)="onCancel()"
+        [actionType]="'cancel'"
+      ></app-form-actions>
+    </div>
+  </div>
+</div>

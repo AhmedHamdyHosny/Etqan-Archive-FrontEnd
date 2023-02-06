@@ -1,0 +1,114 @@
+<div dir="rtl" class="container py-4">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <!-- <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md col-lg">
+          <h4>{{ "ملف مشروع" | translate }}</h4>
+          <hr />
+          <br />
+        </div>
+      </div> -->
+    <div class="row flex-column flex-md-row">
+      <div class="col">
+        <app-select
+          label="فئة المحتوى"
+          [menuItems]="data.references.categories"
+          [form]="form"
+          name="categoryId"
+          [(ngModel)]="data.projectFile!.categoryId"
+        >
+        </app-select>
+      </div>
+
+      <div class="col">
+        <app-input
+          label="عنوان للمحتوى"
+          [form]="form"
+          inputType="text"
+          name="contentTitle"
+          [(ngModel)]="data.projectFile!.contentTitle"
+        >
+        </app-input>
+      </div>
+    </div>
+    <div class="row flex-column flex-md-row">
+      <div class="col form-group">
+        <div>
+          <app-textarea
+            label="وصف المحتوى"
+            [form]="form"
+            name="contentDescription"
+            [(ngModel)]="data.projectFile!.contentDescription"
+          >
+          </app-textarea>
+        </div>
+        <!-- <div class="col">
+          <app-input
+            label="مسار الملف"
+            [form]="form"
+            inputType="text"
+            name="filePath"
+            [(ngModel)]="data.projectFile!.filePath"
+          >
+          </app-input>
+        </div> -->
+        <div>
+          <app-datePicker
+            label="تاريخ الإنتاج"
+            [form]="form"
+            [(ngModel)]="data.projectFile!.productionDate"
+            name="eventDate"
+          ></app-datePicker>
+        </div>
+        <div>
+          <label
+            for="keyWords"
+            [ngClass]="{
+              'text-danger':
+                (!keyWords.valid && keyWords.touched) ||
+                (!keyWords.valid && form.submitted)
+            }"
+            >الكلمات الدالة *</label
+          >
+          <ng-select
+            [ngClass]="{
+              'ng-touched': !keyWords.valid && form.submitted
+            }"
+            #keyWords="ngModel"
+            [addTag]="true"
+            name="keyWords"
+            [hideSelected]="true"
+            [multiple]="true"
+            bindLabel="name"
+            [isOpen]="false"
+            [selectOnTab]="true"
+            [(ngModel)]="fileKeyWords"
+          >
+          </ng-select>
+          <div
+            *ngIf="
+              (!keyWords.valid && keyWords.touched) ||
+              (!keyWords.valid && form.submitted)
+            "
+          >
+            <span
+              class="form-text text-danger"
+              *ngIf="keyWords.errors?.['required']"
+              >مطلوب الادخال</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <app-form-actions
+          [form]="form"
+          [cancelCallback]="true"
+          (cancel)="onCancel()"
+          [actionType]="'basic'"
+        ></app-form-actions>
+      </div>
+    </div>
+  </form>
+</div>

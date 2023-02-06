@@ -9,16 +9,13 @@ import { ProjectAddComponent } from 'src/app/project/project-add/project.add.com
 import { ProjectEditComponent } from 'src/app/project/project-edit/project.edit.component';
 import { ProjectGridComponent } from 'src/app/project/project-grid/project.grid.component';
 import { SearchComponent } from 'src/app/project_files/search/search.component';
-import { ProjectFileAddComponent } from 'src/app/project_files/project-file-add/project.file.add.component';
-import { ProjectFileDetailComponent } from 'src/app/project_files/project-file-detail/project.file.detail.component';
-import { ProjectFileEditComponent } from 'src/app/project_files/project-file-edit/project.file.edit.component';
-import { ProjectFileGridComponent } from 'src/app/project_files/project-file-grid/project.file.grid.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page.not.found.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { ContentTypeGridComponent } from 'src/app/content_types/content-type-grid/content.type.grid.component';
 import { ContentTypeAddComponent } from 'src/app/content_types/content-type-add/content.type.add.component';
 import { ContentTypeDetailComponent } from 'src/app/content_types/content-type-detail/content.type.detail.component';
 import { ContentTypeEditComponent } from 'src/app/content_types/content-type-edit/content.type.edit.component';
+import { ProjectDetailComponent } from 'src/app/project/project-detail/project.detail.component';
 
 
 const routes: Routes = [
@@ -33,11 +30,7 @@ const routes: Routes = [
   { path: 'project/index', component: ProjectGridComponent, canActivate: [AuthGuard]},
   { path: 'project/add', component: ProjectAddComponent, canActivate: [AuthGuard]},
   { path: 'project/:id/edit', component: ProjectEditComponent, canActivate: [AuthGuard]},
-  
-  { path: 'project-file/index', component: ProjectFileGridComponent, canActivate: [AuthGuard]},
-  { path: 'project-file/add', component: ProjectFileAddComponent, canActivate: [AuthGuard]},
-  { path: 'project-file/:id/edit', component: ProjectFileEditComponent, canActivate: [AuthGuard]},
-  { path: 'project-file/:id/detail', component: ProjectFileDetailComponent, canActivate: [AuthGuard]},
+  { path: 'project/:id/detail', component: ProjectDetailComponent, canActivate: [AuthGuard]},
   
   { path: 'content-type/index', component: ContentTypeGridComponent, canActivate: [AuthGuard]},
   { path: 'content-type/add', component: ContentTypeAddComponent, canActivate: [AuthGuard]},

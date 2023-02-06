@@ -19,7 +19,7 @@ import { GridLoaderComponent } from '../components/grid/grid-loader/grid-loader.
 import { GridComponent } from '../components/grid/grid.component';
 import { LoadingIconComponent } from '../components/loading-icon/loading-icon.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page.not.found.component';
-import { FileExtensionDirective } from '../validators/file_extension.validator';
+import { FolderPathDirective } from '../validators/folder_path.validator';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 
@@ -49,7 +49,7 @@ import { MaterialModule } from './material.module';
     GridLoaderComponent,
     GridActionsRenderer,
     DialogComponent,
-    FileExtensionDirective,
+    FolderPathDirective,
   ],
   exports: [
     InputComponent,

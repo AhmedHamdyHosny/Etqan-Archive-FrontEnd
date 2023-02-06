@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  public advancedSearchMode = false;
+  public advancedSearchModeOff = true;
 
   projectFileViews: ProjectFileView[] = [];
   getFiltersSub: Subscription | undefined;
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     fileExtensions: [],
   };
 
-  showMoreBtn : boolean = false;
+  showMoreBtn: boolean = false;
 
   filterModel: {
     pageSize: number;
@@ -42,11 +42,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     projectId: string | undefined;
     contentTypeId: string | undefined;
     fileExtensionIds: string[];
-    categoryId: string| undefined;
+    categoryId: string | undefined;
     keyWordsList: { label: string }[];
     keyWords: string;
   } = {
-    pageSize: 20,
+    pageSize: 10,
     pageNumber: 1,
     search: undefined,
     projectId: undefined,
@@ -93,7 +93,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.toastr.error('لا يوجد مسار للملف');
     }
   }
-  
+
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.getProjectFiles(this.paging.page);
@@ -103,23 +103,25 @@ export class SearchComponent implements OnInit, OnDestroy {
   getProjectFiles(page: number) {
     this.filterModel.pageNumber = page;
     this.filterModel.keyWords = this.filterModel.keyWordsList
-    .map((e) => e.label)
-    .join(',');
+      .map((e) => e.label)
+      .join(',');
 
     this.getDataSub = this.projectFileService
       .getProjectFiles(this.filterModel)
       .subscribe({
         next: (data: any) => {
           this.paging.totalItemsCount = data.result.totalItemsCount;
-          let pages = Math.ceil(this.paging.totalItemsCount / this.filterModel.pageSize);
+          let pages = Math.ceil(
+            this.paging.totalItemsCount / this.filterModel.pageSize
+          );
 
-          this.showMoreBtn = this.paging.page < pages ? true: false;
+          this.showMoreBtn = this.paging.page < pages ? true : false;
           this.projectFileViews = data.result.pageItems;
         },
       });
   }
 
-  resetFilters(){
+  resetFilters() {
     this.filterModel = {
       pageSize: 20,
       pageNumber: 1,
@@ -133,10 +135,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     };
     this.paging.page = 1;
     this.getProjectFiles(this.paging.page);
-    
   }
-  
-  showMore(){
+
+  showMore() {
     this.paging.page++;
     this.getProjectFiles(this.paging.page);
   }

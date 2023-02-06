@@ -9,4 +9,5 @@ export class FileExtension {
   fileExtensionId: string | undefined;
   contentTypeId: string | undefined;
   fileExtensionName: string | undefined;
+  contentType: ContentType | undefined;
 }

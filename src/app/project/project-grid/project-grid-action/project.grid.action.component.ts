@@ -17,6 +17,14 @@ export class ProjectGridActionComponent implements ICellRendererAngularComp {
     this.params = params;
   }
 
+  onDetail() {
+    this.router.navigate([
+      'project',
+      this.params.node.data.projectId,
+      'detail',
+    ]);
+  }
+
   onEdit() {
     this.router.navigate([
       'project',

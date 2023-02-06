@@ -1,5 +1,5 @@
 <label
-*ngIf="label"
+  *ngIf="label"
   [ngClass]="{
     'text-danger':
       (!fieldInput.valid && fieldInput.touched) ||
@@ -7,7 +7,7 @@
   }"
   >{{ label | translate }}<span *ngIf="required"> *</span></label
 >
-<div class="d-flex flex-row-reverse">
+<div [dir]="dir" class="d-flex flex-row-reverse">
   <div class="input-group mx-auto d-flex justify-content-end">
     <input
       class="form-control input-text-en"
@@ -27,7 +27,7 @@
       [max]="max"
       [maxlength]="maxlength"
       [step]="step"
-      [fileExtension]="fileExtension"
+      [folderPath]="folderPath"
     />
     <i
       *ngIf="
@@ -42,7 +42,14 @@
     ></i>
   </div>
 </div>
-<span class="form-text text-danger" *ngIf="!fieldInput.valid && fieldInput.touched || !fieldInput.valid && form.submitted">{{textErrorMsg}}</span> 
+<span
+  class="form-text text-danger"
+  *ngIf="
+    (!fieldInput.valid && fieldInput.touched) ||
+    (!fieldInput.valid && form.submitted)
+  "
+  >{{ textErrorMsg }}</span
+>
 
 <!-- 
 [password]="password"

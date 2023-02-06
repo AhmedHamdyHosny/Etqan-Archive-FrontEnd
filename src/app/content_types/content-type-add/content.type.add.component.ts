@@ -49,6 +49,7 @@ export class ContentTypeAddComponent implements OnInit, OnDestroy {
         contentTypeId: undefined,
         fileExtensionId: undefined,
         fileExtensionName: undefined,
+        contentType: undefined
       },
     ],
   };
@@ -76,6 +77,7 @@ export class ContentTypeAddComponent implements OnInit, OnDestroy {
           contentTypeId: undefined,
           fileExtensionId: undefined,
           fileExtensionName: undefined,
+          contentType: undefined
         },
       ],
     });

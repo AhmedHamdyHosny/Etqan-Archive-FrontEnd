@@ -7,7 +7,7 @@ import { ProjectGridActionComponent } from 'src/app/project/project-grid/project
 import { BindGridService } from 'src/app/shared/components/grid/custom-grid-options';
 import { FilterItem, SortItems } from 'src/app/shared/models/generic_data_format';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { ProjectFileGridActionComponent } from './project-file-grid-action/project.file.grid.action.component';
+import { ProjectFileGridActionComponent } from '../project-file-grid-action/project.file.grid.action.component';
 
 @Component({
   selector: 'app-project-file-grid',

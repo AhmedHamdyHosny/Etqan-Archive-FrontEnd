@@ -1,3 +1,4 @@
+import { Direction } from '@angular/cdk/bidi';
 import {
   Component,
   EventEmitter,
@@ -33,7 +34,7 @@ export class InputComponent
 {
   @Input() pattern:string | RegExp = '';
   @Input() disabled: boolean = false;
-  @Input() fileExtension: boolean = false;
+  @Input() folderPath: boolean = false;
   @Input() minlength: number = 0;
   @Input() inputType = 'text';
   @Input() step: number | undefined;
@@ -41,6 +42,7 @@ export class InputComponent
   @Input() max: number | undefined;
   @Input() maxlength:string| number | null = null;
   @Input() error: any;
+  @Input() dir: Direction = 'rtl';
 
   @Input() label: string | undefined;
   @Input() phone: boolean = false;
@@ -105,8 +107,8 @@ export class InputComponent
     if (Error && Error['required']) {
       this.textErrorMsg = this.requiredErrorMsg;
     }
-    if(Error && Error['invalidFileExtension']){
-      this.textErrorMsg = 'مسار الملف المدخل خطأ';
+    if(Error && Error['invalidFolderPath']){
+      this.textErrorMsg = 'مسار المجلد المدخل خطأ, احذف \\ أو / فى اخر النص';
     }
   }
 

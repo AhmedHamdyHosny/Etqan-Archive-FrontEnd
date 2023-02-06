@@ -1,0 +1,65 @@
+<div class="container pt-4 padding-bottom">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md col-lg">
+          <h4>{{ "تعديل المشروع" | translate }}</h4>
+          <hr />
+          <br />
+        </div>
+      </div>
+  
+      <div class="row form-group">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+          <app-detail-text
+            label="المشروع"
+            inputType="text"
+            name="projectName"
+            [value]="project!.projectName"
+          >
+          </app-detail-text>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-4">
+          <app-detail-text
+            label="الموقع"
+            inputType="text"
+            name="location"
+            [value]="project!.projectLocation"
+          >
+          </app-detail-text>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 mb-4">
+          <app-detail-text
+            label="مسار المجلد"
+            inputType="text"
+            [dir]="'ltr'"
+            name="projectFolderPath"
+            [value]="projectFolderPath"
+          >
+          </app-detail-text>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <app-grid
+            [actionsWithDialog]="true"
+            [AddBtn]="false"
+            [deleteBtn]="false"
+            [gridOptions]="projectFileGridOptions"
+          ></app-grid>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col">
+          <app-form-actions
+            [cancelCallback]="true"
+            [actionType]="'cancel'"
+            (cancel)="onCancel()"
+          ></app-form-actions>
+        </div>
+      </div>
+  </div>
+  

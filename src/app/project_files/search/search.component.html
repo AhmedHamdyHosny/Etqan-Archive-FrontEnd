@@ -19,7 +19,7 @@
           type="button"
           class="btn btn-outline-primary"
           (click)="collapse.toggle()"
-          [attr.aria-expanded]="!advancedSearchMode"
+          [attr.aria-expanded]="!advancedSearchModeOff"
           aria-controls="collapseExample"
         >
           بحث متقدم
@@ -38,7 +38,7 @@
     <div
       class="collapse"
       #collapse="ngbCollapse"
-      [(ngbCollapse)]="advancedSearchMode"
+      [(ngbCollapse)]="advancedSearchModeOff"
       id="collapseExample"
     >
       <div class="row flex-column flex-md-row">
