@@ -32,4 +32,6 @@ export class ProjectFileView extends ProjectFile {
   categoryName: string | undefined;
   contentTypeName: string | undefined;
   fileExtensionName: string | undefined;
+
+ 
 }

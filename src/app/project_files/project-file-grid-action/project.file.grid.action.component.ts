@@ -71,13 +71,10 @@ export class ProjectFileGridActionComponent
 
   onDetail() {
     if (this.params.node.data) {
-      this.dialog.open<ProjectFileDetailDialogComponent, ProjectFileDialogData>(
+      this.dialog.open<ProjectFileDetailDialogComponent, ProjectFile>(
         ProjectFileDetailDialogComponent,
         {
-          data: {
-            projectFile: this.params.node.data,
-            references: this.references,
-          },
+          data: this.params.node.data,
         }
       );
     }

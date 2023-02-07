@@ -1,20 +1,18 @@
 <div class="container">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
     <div class="d-flex flex-column flex-md-row mb-4">
-      <div class="d-flex">
-        <app-input
-          class=""
-          [form]="form"
-          inputType="text"
-          name="search"
-          [(ngModel)]="filterModel!.search"
-        >
-        </app-input>
-        <div class="mx-2"></div>
-        <button type="submit" class="btn btn-primary px-4">بحث</button>
-      </div>
-      <div class="mx-auto"></div>
+      <app-input
+        class=""
+        [form]="form"
+        inputType="text"
+        name="search"
+        [(ngModel)]="filterModel!.search"
+      >
+      </app-input>
+      <div class="mx-2"></div>
       <div class="d-flex mt-3 mt-md-0">
+        <button type="submit" class="btn btn-primary px-4">بحث</button>
+        <div class="mx-2"></div>
         <button
           type="button"
           class="btn btn-outline-primary"
@@ -24,19 +22,11 @@
         >
           بحث متقدم
         </button>
-        <div class="mx-2"></div>
-        <button
-          (click)="resetFilters()"
-          type="button"
-          class="btn btn-danger px-4"
-        >
-          إعادة ضبط
-        </button>
       </div>
     </div>
 
     <div
-      class="collapse"
+      class="advancedSearch collapse"
       #collapse="ngbCollapse"
       [(ngbCollapse)]="advancedSearchModeOff"
       id="collapseExample"
@@ -87,7 +77,7 @@
           </ng-select>
         </div>
       </div>
-      <div class="row mt-4 flex-column flex-md-row">
+      <div class="mt-4 d-flex flex-column flex-md-row">
         <div class="col">
           <label for="keyWords">الكلمات الدالة</label>
           <ng-select
@@ -101,6 +91,17 @@
             [(ngModel)]="filterModel.keyWordsList"
           >
           </ng-select>
+        </div>
+        <div class="mx-2"></div>
+
+        <div class="align-self-end mt-3 mt-md-0">
+          <button
+            (click)="resetFilters()"
+            type="button"
+            class="btn btn-danger px-4"
+          >
+            إعادة ضبط
+          </button>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
     <div class="col">
       <app-detail-text
         label="فئة المحتوى"
-        [value]="data.projectFile.category?.categoryName"
+        [value]="data.category?.categoryName"
       >
       </app-detail-text>
     </div>
@@ -11,7 +11,7 @@
     <div class="col">
       <app-detail-text
         label="عنوان للمحتوى"
-        [value]="data.projectFile.contentTitle"
+        [value]="data.contentTitle"
       >
       </app-detail-text>
     </div>
@@ -23,7 +23,7 @@
           label="وصف المحتوى"
           [disabled]="true"
           name="contentDescription"
-          [(ngModel)]="data.projectFile!.contentDescription"
+          [(ngModel)]="data!.contentDescription"
         >
         </app-textarea>
       </div>

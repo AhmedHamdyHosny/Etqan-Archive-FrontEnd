@@ -41,6 +41,7 @@ import { ContentTypeDetailComponent } from './content_types/content-type-detail/
 import { ProjectFileAddDialogComponent } from './project_files/project-file-add-dialog/project.file.add.dialog.component';
 import { ProjectDetailComponent } from './project/project-detail/project.detail.component';
 import { ProjectFileDetailDialogComponent } from './project_files/project-file-detail-dialog/project.file.detail.dialog.component';
+import { ProjectFileDetailComponent } from './project_files/projec-file-detail/project.file.detail.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ProjectFileDetailDialogComponent } from './project_files/project-file-d
     ProjectFileAddDialogComponent,
     ProjectDetailComponent,
     ProjectFileDetailDialogComponent,
+    ProjectFileDetailComponent,
   ],
   imports: [
     BrowserModule,

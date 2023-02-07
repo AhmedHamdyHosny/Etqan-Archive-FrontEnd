@@ -16,36 +16,89 @@ import { ContentTypeAddComponent } from 'src/app/content_types/content-type-add/
 import { ContentTypeDetailComponent } from 'src/app/content_types/content-type-detail/content.type.detail.component';
 import { ContentTypeEditComponent } from 'src/app/content_types/content-type-edit/content.type.edit.component';
 import { ProjectDetailComponent } from 'src/app/project/project-detail/project.detail.component';
-
+import { ProjectFileDetailComponent } from 'src/app/project_files/projec-file-detail/project.file.detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'search', component: SearchComponent},
-  
-  { path: 'category/index', component: CategoryGridComponent, canActivate: [AuthGuard]},
-  { path: 'category/add', component: CategoryAddComponent, canActivate: [AuthGuard]},
-  { path: 'category/:id/edit', component: CategoryEditComponent, canActivate: [AuthGuard]},
-  { path: 'category/:id/detail', component: CategoryDetailComponent, canActivate: [AuthGuard]},
+  { path: 'search', component: SearchComponent },
 
-  { path: 'project/index', component: ProjectGridComponent, canActivate: [AuthGuard]},
-  { path: 'project/add', component: ProjectAddComponent, canActivate: [AuthGuard]},
-  { path: 'project/:id/edit', component: ProjectEditComponent, canActivate: [AuthGuard]},
-  { path: 'project/:id/detail', component: ProjectDetailComponent, canActivate: [AuthGuard]},
-  
-  { path: 'content-type/index', component: ContentTypeGridComponent, canActivate: [AuthGuard]},
-  { path: 'content-type/add', component: ContentTypeAddComponent, canActivate: [AuthGuard]},
-  { path: 'content-type/:id/edit', component: ContentTypeEditComponent, canActivate: [AuthGuard]},
-  { path: 'content-type/:id/detail', component: ContentTypeDetailComponent, canActivate: [AuthGuard]},
+  {
+    path: 'category/index',
+    component: CategoryGridComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'category/add',
+    component: CategoryAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'category/:id/edit',
+    component: CategoryEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'category/:id/detail',
+    component: CategoryDetailComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'project/index',
+    component: ProjectGridComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'project/add',
+    component: ProjectAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'project/:id/edit',
+    component: ProjectEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'project/:id/detail',
+    component: ProjectDetailComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'project-file/:id/detail',
+    component: ProjectFileDetailComponent,
+    // canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'content-type/index',
+    component: ContentTypeGridComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'content-type/add',
+    component: ContentTypeAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'content-type/:id/edit',
+    component: ContentTypeEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'content-type/:id/detail',
+    component: ContentTypeDetailComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: 'not-found', component: PageNotFoundComponent },
 
   { path: '', redirectTo: '/search', pathMatch: 'full' }, // redirect to `home-component`
-  { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404
+  { path: '**', component: PageNotFoundComponent }, // Wildcard route for a 404
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
