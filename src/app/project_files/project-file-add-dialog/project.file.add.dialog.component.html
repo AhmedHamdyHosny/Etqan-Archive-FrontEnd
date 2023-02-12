@@ -59,6 +59,16 @@
             name="eventDate"
           ></app-datePicker>
         </div>
+        <div class="col">
+          <app-input
+            label="ملاحظات"
+            [form]="form"
+            inputType="text"
+            name="note"
+            [(ngModel)]="data.projectFile!.note"
+          >
+          </app-input>
+        </div>
         <div>
           <label
             for="keyWords"

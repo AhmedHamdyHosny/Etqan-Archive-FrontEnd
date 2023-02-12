@@ -27,6 +27,7 @@
     onFirstDataRendered="onFirstDataRendered($event)"
     #agGrid
     [gridOptions]="gridOptions"
+    [columnDefs]="columnDefs"
     (filterChanged)="onFilterChanged($event)"
     (sortChanged)="onSortChanged($event)"
     class="mt-2 grid ag-theme-alpine col-12"

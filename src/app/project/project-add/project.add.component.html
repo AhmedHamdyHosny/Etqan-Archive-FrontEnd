@@ -35,6 +35,20 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-8 mb-4">
         <app-input
+        label="مسار المجلد"
+        [form]="form"
+        inputType="text"
+        [required]="true"
+        [dir]="'ltr'"
+        name="projectFolderPath"
+        [(ngModel)]="projectFolderPath"
+      >
+      </app-input>
+      </div>
+
+      <!-- <div class="col-xs-12 col-sm-12 col-md-8 d-flex mb-4 align-items-center">
+        <div class="w-100">
+          <app-input
           label="مسار المجلد"
           [form]="form"
           inputType="text"
@@ -45,23 +59,21 @@
           [(ngModel)]="projectFolderPath"
         >
         </app-input>
-      </div>
+        </div>
+        <div class="mx-1"></div>
+        <div>
+          <button class="btn btn-primary">تصفح</button>
+        </div>
+      </div> -->
     </div>
 
     <div class="row">
       <div class="col">
-        <input
-          type="file"
-          class="file-input d-none"
-          multiple
-          (change)="onFilesSelected($event)"
-          #fileUpload
-        />
-
         <app-grid
+          *ngIf="references"
           (gridDelete)="onDeleteProjectFileRows($event)"
           [actionsWithDialog]="true"
-          (gridAdd)="fileUpload.click()"
+          (gridAdd)="onAddProjectFile()"
           [gridOptions]="projectFileGridOptions"
         ></app-grid>
       </div>

@@ -34,5 +34,9 @@ export class ProjectService {
     );
   }
 
-
+  getPathFiles(directoryPath: string) {
+    return this.http.post(environment.ApiUrl + 'projectFile/GetPathFiles', {
+      directoryPath: directoryPath,
+    });
+  }
 }

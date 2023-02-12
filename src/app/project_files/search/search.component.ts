@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     keyWordsList: { label: string }[];
     keyWords: string;
   } = {
-    pageSize: 10,
+    pageSize: 20,
     pageNumber: 1,
     search: undefined,
     projectId: undefined,

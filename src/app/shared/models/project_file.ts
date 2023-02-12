@@ -12,19 +12,19 @@ export class ProjectFile {
   contentDescription: string | undefined;
   note: string | undefined;
   keyWords: string| undefined;
+  fileSize: number| undefined;
+  duration: number| undefined;
   productionDate: Date | undefined;
-  fileExtension: FileExtension | undefined;
+  // fileExtension: FileExtension | undefined;
   category: Category | undefined;
 
   constructor(fileName:string, fileExtension?:FileExtension, category? :Category){
     this.fileName = fileName;
-    this.fileExtension = fileExtension;
+    // this.fileExtension = fileExtension;
     this.fileExtensionId = fileExtension?.fileExtensionId;
     this.category = category;
     this.categoryId = category?.categoryId;
   }
-
-
 }
 
 export class ProjectFileView extends ProjectFile {
@@ -32,6 +32,7 @@ export class ProjectFileView extends ProjectFile {
   categoryName: string | undefined;
   contentTypeName: string | undefined;
   fileExtensionName: string | undefined;
-
+  formattedFileSize: string | undefined;
+  formattedDuration: string | undefined;
  
 }

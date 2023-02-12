@@ -28,6 +28,7 @@ export class ProjectFileGridActionComponent
   params!: ICellRendererParams;
   editBtn: boolean = false;
   detailBtn: boolean = false;
+  filePathBtn: boolean = false;
 
   projecFileDialogRef:
     | MatDialogRef<ProjectFileAddDialogComponent, ProjectFile>
@@ -65,6 +66,9 @@ export class ProjectFileGridActionComponent
       }
       if (this.params.context.detailBtn) {
         this.detailBtn = true;
+      }
+      if (this.params.context.filePathBtn) {
+        this.filePathBtn = true;
       }
     }
   }

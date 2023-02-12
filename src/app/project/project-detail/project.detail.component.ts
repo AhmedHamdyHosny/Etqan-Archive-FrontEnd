@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Project } from 'src/app/shared/models/project';
 import { ProjectFileGridActionComponent } from 'src/app/project_files/project-file-grid-action/project.file.grid.action.component';
 import { GridOptions } from 'ag-grid-community';
-import { ProjectFile } from 'src/app/shared/models/project_file';
+import { ProjectFile, ProjectFileView } from 'src/app/shared/models/project_file';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -24,7 +24,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   };
   projectFolderPath: string | undefined;
 
-  projectFileGridOptions: Partial<GridOptions<ProjectFile>> = {
+  projectFileGridOptions: Partial<GridOptions<ProjectFileView>> = {
     columnDefs: [
       {
         field: 'fileName',
@@ -33,15 +33,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       {
         field: 'contentTypeName',
         headerName: 'نوع المحتوى',
-        valueGetter: (param) =>
-          param.node?.data?.fileExtension?.contentType?.contentTypeName,
-        cellStyle: (params) => {
-          if (!params.value || params.value == '') {
-            //mark cell as red
-            return { backgroundColor: '#D10000' };
-          }
-          return { backgroundColor: 'transparent' };
-        },
+      },
+      {
+        field: 'formattedFileSize',
+        headerName: 'حجم الملف',
+      },
+      {
+        field: 'formattedDuration',
+        headerName: 'مدة الملف',
       },
       {
         field: 'categoryName',
@@ -71,6 +70,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     },
     context: {
       detailBtn: true,
+      filePathBtn: true
     },
     rowSelection: 'multiple',
     rowData: [],

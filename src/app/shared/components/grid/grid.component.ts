@@ -13,6 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import {
+  ColDef,
+  ColGroupDef,
   Column,
   FilterChangedEvent,
   GridOptions,
@@ -73,6 +75,8 @@ export class GridComponent
 
   @ViewChild('agGrid') agGrid: AgGridAngular | undefined;
 
+  @Input() columnDefs: (ColDef<any> | ColGroupDef<any>)[] | null | undefined;
+  
   @Input() gridOptions: Partial<GridOptions> = {
     pagination: false,
   };

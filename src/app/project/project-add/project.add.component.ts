@@ -10,13 +10,17 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { Project } from 'src/app/shared/models/project';
-import { ProjectFile } from 'src/app/shared/models/project_file';
+import {
+  ProjectFile,
+  ProjectFileView,
+} from 'src/app/shared/models/project_file';
 import { GridOptions } from 'ag-grid-community';
 import { BindGridService } from 'src/app/shared/components/grid/custom-grid-options';
 import { ProjectFileGridActionComponent } from 'src/app/project_files/project-file-grid-action/project.file.grid.action.component';
 import { FileExtension } from 'src/app/shared/models/content_type';
 import { CustomSelectListItem } from 'src/app/shared/models/generic_data_format';
 import { ProjectService } from '../project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-project-add',
@@ -25,6 +29,7 @@ import { ProjectService } from '../project.service';
   styleUrls: ['project.add.component.css'],
 })
 export class ProjectAddComponent implements OnInit, OnDestroy {
+  @ViewChild('form') form!: NgForm;
   project: Project = {
     projectId: '',
     projectName: '',
@@ -32,7 +37,7 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
     projectFiles: [],
   };
 
-  projectFolderPath: string|undefined;
+  projectFolderPath: string | undefined;
 
   references: {
     fileExtensions: FileExtension[];
@@ -44,8 +49,9 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
 
   projectGetSub: Subscription | undefined;
   projectCreateSub: Subscription | undefined;
+  getPathFilesSub: Subscription | undefined;
 
-  projectFileGridOptions: Partial<GridOptions<ProjectFile>> = {
+  projectFileGridOptions: Partial<GridOptions<ProjectFileView>> = {
     columnDefs: [
       {
         field: 'fileName',
@@ -54,27 +60,33 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
       {
         field: 'contentTypeName',
         headerName: 'نوع المحتوى',
-        valueGetter: (param) =>
-          param.node?.data?.fileExtension?.contentType?.contentTypeName,
+        valueGetter: (param) => param.node?.data?.contentTypeName,
         cellStyle: (params) => {
           if (!params.value || params.value == '') {
             //mark cell as red
             return { backgroundColor: '#D10000' };
           }
-          return { backgroundColor: 'transparent'};
+          return { backgroundColor: 'transparent' };
         },
+      },
+      {
+        field: 'formattedFileSize',
+        headerName: 'حجم الملف',
+      },
+      {
+        field: 'formattedDuration',
+        headerName: 'مدة الملف',
       },
       {
         field: 'categoryName',
         headerName: 'فئه المحتوى',
-        valueGetter: (param) =>
-          param.node?.data?.category?.categoryName,
+        valueGetter: (param) => param.node?.data?.category?.categoryName,
         cellStyle: (params) => {
           if (!params.value || params.value == '') {
             //mark cells as red
             return { backgroundColor: '#D10000' };
           }
-          return { backgroundColor: 'transparent'};
+          return { backgroundColor: 'transparent' };
         },
       },
       {
@@ -94,6 +106,7 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
     },
     context: {
       editBtn: true,
+      filePathBtn: true
     },
     rowSelection: 'multiple',
     rowData: [],
@@ -103,6 +116,7 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
     private storageService: StorageService,
     private bindGridService: BindGridService,
     private projectService: ProjectService,
+    private toastr: ToastrService,
     private location: Location
   ) {}
 
@@ -115,32 +129,30 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
     this.onCreateProjectGET();
   }
 
+  onAddProjectFile() {
+    let folderPathControl = this.form.control.controls['projectFolderPath'];
+    if (folderPathControl.valid) {
+      this.getPathFilesSub = this.projectService
+        .getPathFiles(folderPathControl.value)
+        .subscribe({
+          next: (data: any) => {
+            let projectFiles: ProjectFileView[] = [];
+            projectFiles.push(...data.result);
+            console.log(projectFiles);
+            this.projectFileGridOptions.api?.setRowData(projectFiles);
+          },
+        });
+    } else {
+      this.toastr.error('الرجاء إدخال مسار مجلد صحيح.');
+    }
+  }
+
   onDeleteProjectFileRows(selectedRows: any[]) {
     this.projectFileGridOptions.api?.applyTransaction({
       remove: selectedRows,
     });
   }
 
-  onFilesSelected(event: any) {
-    let projectFiles: ProjectFile[] = [];
-    for (var i = 0; i < event.target.files.length; i++) {
-      const file: File = event.target.files[i];
-      console.log(file);
-      let fileNameList = file.name.split('.');
-      if (fileNameList.length > 1) {
-        let extension = fileNameList[fileNameList.length - 1];
-        let fileExtension = this.references.fileExtensions.find(
-          (x) => x.fileExtensionName?.toLowerCase() == extension.toLowerCase()
-        );
-        if (fileExtension) {
-          projectFiles.push(new ProjectFile(file.name, fileExtension));
-        }
-      }
-    }
-    this.projectFileGridOptions.api?.applyTransaction({
-      add: projectFiles,
-    });
-  }
 
   onCreateProjectGET(): void {
     this.projectGetSub = this.projectService
@@ -166,16 +178,15 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.getAllGridRows();
-      this.project.projectFiles.forEach(element => {
-        element.filePath = this.projectFolderPath + '\\'+element.fileName;
-      });
-      console.log(this.project);
+      // this.project.projectFiles.forEach((element) => {
+      //   element.filePath = this.projectFolderPath + '\\' + element.fileName;
+      // });
       this.onCreateProjectPOST();
     }
   }
 
   getAllGridRows() {
-    let rowData: ProjectFile[] = [];
+    let rowData: ProjectFileView[] = [];
     this.projectFileGridOptions.api?.forEachNode((node) => {
       if (node.data) {
         rowData.push(node.data);
@@ -188,5 +199,6 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.projectGetSub?.unsubscribe();
     this.projectCreateSub?.unsubscribe();
+    this.getPathFilesSub?.unsubscribe();
   }
 }

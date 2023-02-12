@@ -9,10 +9,7 @@
     </div>
 
     <div class="col">
-      <app-detail-text
-        label="عنوان للمحتوى"
-        [value]="data.contentTitle"
-      >
+      <app-detail-text label="عنوان للمحتوى" [value]="data.contentTitle">
       </app-detail-text>
     </div>
   </div>
@@ -37,6 +34,10 @@
       </div> -->
       <div>
         <app-detail-text label="تاريخ الإنتاج" [value]="productionDate_str">
+        </app-detail-text>
+      </div>
+      <div class="col">
+        <app-detail-text label="ملاحظات" name="note" [value]="data.note">
         </app-detail-text>
       </div>
       <div>
