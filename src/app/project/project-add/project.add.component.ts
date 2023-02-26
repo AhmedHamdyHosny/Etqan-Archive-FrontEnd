@@ -138,7 +138,6 @@ export class ProjectAddComponent implements OnInit, OnDestroy {
           next: (data: any) => {
             let projectFiles: ProjectFileView[] = [];
             projectFiles.push(...data.result);
-            console.log(projectFiles);
             this.projectFileGridOptions.api?.setRowData(projectFiles);
           },
         });

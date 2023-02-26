@@ -117,7 +117,6 @@ export class ContentTypeEditComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.getAllFileExtensionRows();
-      console.log(this.contentType);
       this.onEditContentTypePOST();
     }
   }

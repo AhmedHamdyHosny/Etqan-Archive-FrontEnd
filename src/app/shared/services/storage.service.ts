@@ -45,7 +45,7 @@ export class StorageService {
 
   onDeleteModel(model: string, IdList: string[]) {
     this.gridLoader = true;
-    return this.http.post(this.baseUrl + model + '/DeleteGroup', IdList);
+    return this.http.post(this.baseUrl + model + '/DeleteForeverGroup', IdList);
   }
 
   onModelIndex(model: string) {

@@ -6,14 +6,20 @@ import { GridOptions } from 'ag-grid-community/dist/lib/entities/gridOptions';
 
 @Injectable({ providedIn: 'root' })
 export class BindGridService {
+  Rtl: boolean;
+
   constructor(public translate: TranslateService) {
-  
+    if (this.translate.currentLang == 'en') {
+      this.Rtl = false;
+    } else {
+      this.Rtl = true;
+    }
   }
 
   public localizeHeader(parameters: HeaderValueGetterParams): string {
-    // if (parameters.colDef?.headerName) {
-    //   return this.translate.instant(parameters.colDef.headerName);
-    // }
+    if (parameters.colDef?.headerName) {
+      return this.translate.instant(parameters.colDef.headerName);
+    }
     return 'No headerName';
   }
 
@@ -25,7 +31,7 @@ export class BindGridService {
     let bindedGridOptions: GridOptions = {
       ...gridOptions,
       headerHeight: 40,
-      columnDefs: gridOptions.columnDefs ? [
+      columnDefs: [
         {
           field: '',
           checkboxSelection: true,
@@ -36,7 +42,7 @@ export class BindGridService {
           suppressNavigable: true,
         },
         ...gridOptions.columnDefs!,
-      ]: null,
+      ],
       defaultColDef: {
         ...gridOptions.defaultColDef,
         resizable: true,
@@ -79,10 +85,12 @@ export class BindGridService {
         },
       };
     }
-    bindedGridOptions = {
-      ...bindedGridOptions,
-      enableRtl: true,
-    };
+    if (this.Rtl) {
+      bindedGridOptions = {
+        ...bindedGridOptions,
+        enableRtl: this.Rtl,
+      };
+    }
     return bindedGridOptions;
   }
 }

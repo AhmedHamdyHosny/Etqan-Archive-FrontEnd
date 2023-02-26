@@ -54,7 +54,8 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
       {
         field: 'contentTypeName',
         headerName: 'نوع المحتوى',
-      }, {
+      },
+      {
         field: 'formattedFileSize',
         headerName: 'حجم الملف',
         valueGetter: (param) => param.node?.data?.formattedFileSize?.toString(),
@@ -92,7 +93,7 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
     },
     context: {
       editBtn: true,
-      filePathBtn: true
+      filePathBtn: true,
     },
     rowSelection: 'multiple',
     rowData: [],
@@ -132,7 +133,6 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
           next: (data: any) => {
             let projectFiles: ProjectFileView[] = [];
             projectFiles.push(...data.result);
-            console.log(projectFiles);
             this.projectFileGridOptions.api?.setRowData(projectFiles);
           },
         });

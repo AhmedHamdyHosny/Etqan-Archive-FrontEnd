@@ -27,7 +27,6 @@ export class ProjectFileAddDialogComponent {
     @Inject(MAT_DIALOG_DATA)
     public data: ProjectFileDialogData
   ) {
-    console.log(data);
     if (this.data.projectFile.keyWords) {
       this.fileKeyWords = this.data.projectFile.keyWords
         .split(',')
