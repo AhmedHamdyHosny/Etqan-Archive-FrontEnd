@@ -113,14 +113,18 @@
     </div>
     <div *ngFor="let item of projectFileViews" class="card project-item">
       <div class="card-body">
-        <h5 class="card-title fw-bold fs-5">{{ item.contentTitle ?? "" }}</h5>
+        <h5 class="card-title fw-bold fs-5">{{ item.projectName ?? "" }}</h5>
+        <h4 class="card-title fw-bold fs-6">{{ item.contentTitle ?? "" }}</h4>
         <!-- <h6 class="card-subtitle mb-2 fw-bold fs-6 text-muted">{{ item.contentTypeName }}</h6> -->
         <!-- <p class="card-text">
          {{ item.contentDescription }}
         </p> -->
         <div class="d-flex justify-content-between mb-2">
           <p>{{ item.contentDescription }}</p>
-          <p>{{ item.contentTypeName }}</p>
+          <div>
+            <p>{{ item.contentTypeName }}</p>
+            <p>{{ item.fileExtensionName }}</p>
+          </div>
         </div>
 
         <div class="d-flex justify-content-between">
@@ -137,7 +141,24 @@
     </div>
   </div>
 
+  <!-- <div class="row">
+    <ngb-pagination
+    *ngIf="paging.totalItemsCount > 0"
+    class="d-flex justify-content-center mt-5 text-black-50"
+    [collectionSize]="paging.totalItemsCount"
+    [(page)]="paging.page"
+    [maxSize]="4"
+    [pageSize]="filterModel.pageSize"
+    (pageChange)="onPageChanged($event)"
+  ></ngb-pagination>
+  </div> -->
+  
+<div class="d-flex justify-content-between py-5">
+  <div>
+    <div class="total-items-count">النتيجة الكلية: {{paging.totalItemsCount}}</div>
+  </div>
   <button *ngIf="showMoreBtn" (click)="showMore()" class="btn btn-primary">
     المزيد
   </button>
+</div>
 </div>

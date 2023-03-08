@@ -1,9 +1,39 @@
-
 @import "~ag-grid-community/styles//ag-grid.css";
 @import "~ag-grid-community/styles//ag-theme-alpine.css";
-@import "~@ng-select/ng-select/themes/default.theme.css"; 
+@import "~@ng-select/ng-select/themes/default.theme.css";
 @import "../node_modules/ng-pick-datetime-ex/assets/style/picker.min.css";
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.action-button {
+  border: none;
+  color: white;
+  padding: 3px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.action-button.edit::before {
+  font-family: fontAwesome;
+  content: "\f044\00a0";
+}
+
+.action-button.save::before {
+  font-family: fontAwesome;
+  content: "\f00c\00a0";
+}
+
+.action-button.cancel::before {
+  font-family: fontAwesome;
+  content: "\f00d\00a0";
+}

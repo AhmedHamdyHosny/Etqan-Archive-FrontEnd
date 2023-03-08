@@ -68,6 +68,8 @@ import { ProjectFileDetailComponent } from './project_files/projec-file-detail/p
     ProjectDetailComponent,
     ProjectFileDetailDialogComponent,
     ProjectFileDetailComponent,
+    // FileExtensionGridActionComponent,
+    
   ],
   imports: [
     BrowserModule,

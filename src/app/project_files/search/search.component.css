@@ -26,3 +26,8 @@
   border: 2px solid darkgray;
   padding: 10px;
 }
+
+.total-items-count{
+  font-weight: 700;
+  font-size: 14;
+}

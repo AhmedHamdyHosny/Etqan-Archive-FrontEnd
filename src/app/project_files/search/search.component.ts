@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     keyWordsList: { label: string }[];
     keyWords: string;
   } = {
-    pageSize: 20,
+    pageSize: 5,
     pageNumber: 1,
     search: undefined,
     projectId: undefined,
@@ -116,7 +116,9 @@ export class SearchComponent implements OnInit, OnDestroy {
           );
 
           this.showMoreBtn = this.paging.page < pages ? true : false;
-          this.projectFileViews = data.result.pageItems;
+          if(data.result.pageItems && data.result.pageItems.length != 0){
+            this.projectFileViews.push(...data.result.pageItems);
+          }
         },
       });
   }
